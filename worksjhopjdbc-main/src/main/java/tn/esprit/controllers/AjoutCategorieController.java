@@ -26,40 +26,50 @@ public class AjoutCategorieController {
     void ajouterCategorie(ActionEvent event) {
         String nomCategorie = nomCategorieTextField.getText();
 
-        if (!nomCategorie.isEmpty()) {
-            // Créer une nouvelle instance de la catégorie avec le nom spécifié
-            categorie nouvelleCategorie = new categorie();
-            nouvelleCategorie.setNomcategorie(nomCategorie);
+        // Validate input
+        if (!validateNomCategorie(nomCategorie)) {
+            return; // Exit method if validation fails
+        }
 
-            // Ajouter la nouvelle catégorie à la base de données
-            boolean ajoutReussi = categorieService.addCategorie(nouvelleCategorie);
+        // Creating a new instance of the category with the specified name
+        categorie nouvelleCategorie = new categorie();
+        nouvelleCategorie.setNomcategorie(nomCategorie);
 
-            if (ajoutReussi) {
-                // Afficher une confirmation
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Ajout réussi");
-                alert.setHeaderText(null);
-                alert.setContentText("La catégorie a été ajoutée avec succès !");
-                alert.showAndWait();
-            } else {
-                // Afficher une erreur
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Erreur");
-                alert.setHeaderText(null);
-                alert.setContentText("Une erreur s'est produite lors de l'ajout de la catégorie !");
-                alert.showAndWait();
-            }
+        // Adding the new category to the database
+        boolean ajoutReussi = categorieService.addCategorie(nouvelleCategorie);
 
-            // Effacer le champ de texte après l'ajout
+        // Show appropriate alert based on the result of adding the category
+        if (ajoutReussi) {
+            showAlert(Alert.AlertType.INFORMATION, "Ajout réussi", "La catégorie a été ajoutée avec succès !");
+            // Clear the text field after adding
             nomCategorieTextField.clear();
         } else {
-            // Afficher une erreur si le champ de texte est vide
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Champ vide");
-            alert.setHeaderText(null);
-            alert.setContentText("Veuillez saisir le nom de la catégorie !");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.ERROR, "Erreur", "Une erreur s'est produite lors de l'ajout de la catégorie !");
         }
+    }
+
+    private boolean validateNomCategorie(String nomCategorie) {
+        if (nomCategorie.isEmpty()) {
+            showAlert(Alert.AlertType.ERROR, "Champ vide", "Veuillez saisir le nom de la catégorie !");
+            return false;
+        }
+        if (nomCategorie.length() < 4) {
+            showAlert(Alert.AlertType.ERROR, "Nom de Catégorie", "Le nom de la catégorie doit avoir au moins 4 caractères !");
+            return false;
+        }
+        if (!nomCategorie.matches(".*[a-zA-Z].*")) {
+            showAlert(Alert.AlertType.ERROR, "Nom de Catégorie", "Le nom de la catégorie doit contenir au moins une lettre !");
+            return false;
+        }
+        return true;
+    }
+
+    private void showAlert(Alert.AlertType alertType, String title, String content) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
     }
     private void navigate(String fxmlFile, EventObject event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -8,16 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.util.converter.DoubleStringConverter;
 import tn.esprit.models.Pack;
 import tn.esprit.services.ServicePack;
-import javafx.scene.control.ComboBox;
 import tn.esprit.models.typePack;
 import tn.esprit.services.ServiceTypePack;
 import java.io.File;
@@ -70,6 +67,29 @@ public class PackController {
 
         // Ajouter les types de pack à la ComboBox
         TypePackComboBox.setItems(typePacks);
+        // Validator pour le champ NomT (commence par une majuscule)
+        NomT.setTextFormatter(new TextFormatter<>(change ->
+                change.getControlNewText().matches("^\\p{Lu}.*$") ? change : null));
+
+        // Validator pour le champ DescriptionT (commence par une majuscule)
+        DescriptionT.setTextFormatter(new TextFormatter<>(change ->
+                change.getControlNewText().matches("^\\p{Lu}.*$") ? change : null));
+
+        // Validator pour le champ PrixT (format numérique positif)
+        PrixT.setTextFormatter(new TextFormatter<>(new DoubleStringConverter(), null, c -> {
+            if (c.getText().matches("\\d*\\.?\\d*")) {
+                return c;
+            } else {
+                return null;
+            }
+        }));
+
+        // Validator pour le champ PrixT (positif)
+        PrixT.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                PrixT.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
     }
     @FXML
     void ajouter(ActionEvent event) {
@@ -79,8 +99,11 @@ public class PackController {
             return; // Arrêter la méthode si aucune image n'a été sélectionnée
         }
 
-        // Convertir la date sélectionnée en format SQL Date
         LocalDate localDate = DateT.getValue();
+        if (localDate == null) {
+            showAlert("Date invalide", "Veuillez sélectionner une date.");
+            return; // Stop method execution if no date is selected
+        }
         Date sqlDate = Date.valueOf(localDate);
 
         typePack selectedTypePack = TypePackComboBox.getValue();
@@ -123,6 +146,54 @@ public class PackController {
             System.out.println("Image sélectionnée : " + image);
         }
     }
+    private boolean validateInputFields() {
+        String nomPack = NomT.getText();
+        String descriptionPack = DescriptionT.getText();
+        String prixText = PrixT.getText();
+        LocalDate selectedDate = DateT.getValue();
+
+        // Check if any of the fields are empty
+        if (nomPack.isEmpty() || descriptionPack.isEmpty() || prixText.isEmpty() || selectedDate == null) {
+            showAlert("Champs requis", "Veuillez remplir tous les champs.");
+            return false;
+        }
+
+        // Validate price format
+        try {
+            double prix = Double.parseDouble(prixText);
+            if (prix <= 0) {
+                showAlert("Format de prix incorrect", "Le prix doit être supérieur à zéro.");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            showAlert("Format de prix incorrect", "Veuillez saisir un prix numérique valide.");
+            return false;
+        }
+
+        // Validate if text fields start with an uppercase letter
+        if (!Character.isUpperCase(nomPack.charAt(0)) || !Character.isUpperCase(descriptionPack.charAt(0))) {
+            showAlert("Format de texte incorrect", "Les champs doivent commencer par une lettre majuscule.");
+            return false;
+        }
+
+        // Validate selected date
+        LocalDate today = LocalDate.now();
+        if (selectedDate.isBefore(today)) {
+            showAlert("Date invalide", "La date doit être aujourd'hui ou ultérieure.");
+            return false;
+        }
+
+        // All fields are valid
+        return true;
+    }
+    private void showAlert(String title, String content) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
     private void navigate(String fxmlFile, EventObject event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
