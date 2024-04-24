@@ -1,0 +1,35 @@
+/* Style des éléments communs */
+
+.itemC {
+    -fx-background-color: white; /* Couleur de fond */
+    -fx-background-radius: 5; /* Bordure arrondie */
+    -fx-background-insets: 0; /* Marge intérieure */
+    -fx-padding: 10; /* Espacement intérieur */
+    -fx-border-color: #ccc; /* Couleur de la bordure */
+    -fx-border-width: 1; /* Largeur de la bordure */
+    -fx-border-radius: 5; /* Rayon de la bordure arrondie */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.5, 2, 2); /* Ombre */
+}
+
+.itemC:hover {
+    -fx-background-color: #f0f0f0; /* Couleur de fond au survol */
+}
+
+.label {
+    -fx-font-size: 14px; /* Taille de police */
+}
+
+.button {
+    -fx-font-size: 12px; /* Taille de police */
+    -fx-padding: 5 10; /* Espacement interne */
+    -fx-text-fill: #2A73FF; /* Couleur du texte */
+    -fx-background-color: transparent; /* Fond transparent */
+    -fx-border-color: #2A73FF; /* Couleur de la bordure */
+    -fx-border-width: 1; /* Largeur de la bordure */
+    -fx-border-radius: 20; /* Rayon de la bordure arrondie */
+}
+
+.button:hover {
+    -fx-background-color: #2A73FF; /* Fond au survol */
+    -fx-text-fill: #fff; /* Texte au survol */
+}

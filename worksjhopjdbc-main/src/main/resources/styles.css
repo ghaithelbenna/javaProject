@@ -1,0 +1,21 @@
+/* Style des boutons */
+.custom-button {
+    -fx-background-color: #FF5733; /* Couleur rouge */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de police */
+    -fx-border-radius: 5px; /* Rayon de la bordure */
+}
+
+
+/* Styles pour le TextField */
+.custom-textfield {
+    -fx-background-color: white; /* Couleur de fond */
+    -fx-border-color: #ccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 5px; /* Rayon de la bordure */
+}
+
+/* Styles pour les RadioButton */
+.custom-radio-button {
+    -fx-font-size: 14px; /* Taille de police */
+}

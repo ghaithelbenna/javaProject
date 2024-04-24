@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.AjoutCategorieController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <Label text="Nom Catégorie" layoutX="47.0" layoutY="48.0"/>
+    <TextField fx:id="nomCategorieTextField" layoutX="150.0" layoutY="45.0"/>
+
+    <Button text="Ajouter" layoutX="230.0" layoutY="100.0" onAction="#ajouterCategorie"/>
+    <ToolBar layoutX="0" layoutY="0" prefWidth="875">
+        <!-- Ajoutez vos éléments de barre de navigation ici -->
+        <Button text="afficher Pack" onAction="#afficherPack" />
+        <Button text="ajouter Pack" onAction="#ajouterPack" />
+        <Button text="afficher categorie" onAction="#affichercategorie" />
+        <Button text="ajouter categorie" onAction="#ajoutercategorie" />
+        <Button text="afficher type Pack" onAction="#affichertypePack" />
+        <Button text="ajouter type Pack" onAction="#ajoutertypePack" />
+    </ToolBar>
+</AnchorPane>

@@ -1,0 +1,47 @@
+/* styles.css */
+
+/* Style pour les VBox (packs) */
+.vbox-pack {
+    -fx-background-color: linear-gradient(to bottom, #f4f4f4, #eaeaea);
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 0);
+    -fx-padding: 10;
+}
+
+/* Style pour les ImageView */
+.image-view {
+    -fx-fit-height: 150;
+    -fx-fit-width: 250;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);
+}
+
+/* Style pour les Labels */
+.label {
+    -fx-font-size: 14pt;
+    -fx-text-fill: #333333;
+    -fx-font-weight: bold;
+}
+
+/* Style pour la description */
+.description {
+    -fx-font-size: 12pt;
+    -fx-text-fill: #666666;
+}
+
+/* Style pour le prix */
+.price {
+    -fx-font-size: 14pt;
+    -fx-text-fill: #009688; /* Une couleur verte */
+}
+
+/* Style pour la date */
+.date {
+    -fx-font-size: 12pt;
+    -fx-text-fill: #333333;
+}
+
+/* Style pour la disponibilité */
+.available {
+    -fx-font-size: 12pt;
+    -fx-text-fill: #4CAF50; /* Une couleur verte */
+}

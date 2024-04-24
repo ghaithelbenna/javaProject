@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="tn.esprit.controllers.ModifierCategorieController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" spacing="10">
+        <Label text="Modifier la catégorie" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
+
+        <HBox spacing="10">
+            <Label text="Nom de la catégorie :" />
+            <TextField fx:id="nomCategorieTextField" />
+        </HBox>
+
+        <!-- Ajoutez d'autres champs si nécessaire -->
+
+        <Button text="Enregistrer" onAction="#modifierCategorie" />
+    </VBox>
+    <ToolBar layoutX="0" layoutY="0" prefWidth="875">
+        <!-- Ajoutez vos éléments de barre de navigation ici -->
+        <Button text="afficher Pack" onAction="#afficherPack" />
+        <Button text="ajouter Pack" onAction="#ajouterPack" />
+        <Button text="afficher categorie" onAction="#affichercategorie" />
+        <Button text="ajouter categorie" onAction="#ajoutercategorie" />
+        <Button text="afficher type Pack" onAction="#affichertypePack" />
+        <Button text="ajouter type Pack" onAction="#ajoutertypePack" />
+    </ToolBar>
+</AnchorPane>

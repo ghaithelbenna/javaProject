@@ -1,0 +1,114 @@
+package tn.esprit.models;
+
+import java.util.Date;
+public class Pack {
+
+    private int id;
+    private String nomPack;
+    private String descriptionPack;
+    private double prix;
+    private Date date;
+    private String image;
+    private boolean disponible;
+
+    public Pack(int id, int id_typepack,String nomPack, String descriptionPack, String prix, double date, java.sql.Date image, String disponible ) {
+    }
+
+    public Pack(int id,int id_typepack, String nomPack, String descriptionPack, double prix, Date date, String image, boolean disponible) {
+        this.id = id;
+        this.id_typepack = id_typepack;
+        this.nomPack = nomPack;
+        this.descriptionPack = descriptionPack;
+        this.prix = prix;
+        this.date = date;
+        this.image = image;
+        this.disponible = disponible;
+
+    }
+
+
+    public double getPrix() {
+        return prix;
+    }
+
+    public int getId_typepack() {
+        return id_typepack;
+    }
+
+    public void setId_typepack(int id_typepack) {
+        this.id_typepack = id_typepack;
+    }
+
+    private int id_typepack;
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNomPack() {
+        return nomPack;
+    }
+
+    public void setNomPack(String nomPack) {
+        this.nomPack = nomPack;
+    }
+
+    public String getDescriptionPack() {
+        return descriptionPack;
+    }
+
+    public void setDescriptionPack(String descriptionPack) {
+        this.descriptionPack = descriptionPack;
+    }
+
+    public double getprix() {
+        return prix;
+    }
+
+    public void setPrix(double prix) {
+        this.prix = prix;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public boolean isDisponible() {
+        return disponible;
+    }
+
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
+    }
+
+    @Override
+    public String toString() {
+        return "Pack{" +
+                "id=" + id +
+                ", nomPack='" + nomPack + '\'' +
+                ", descriptionPack='" + descriptionPack + '\'' +
+                ", prix=" + prix +
+                ", date=" + date +
+                ", image='" + image + '\'' +
+                ", disponible=" + disponible +
+                ", id_typepack=" + id_typepack +
+                '}';
+    }
+}
