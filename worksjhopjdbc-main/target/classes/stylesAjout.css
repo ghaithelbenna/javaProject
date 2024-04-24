@@ -1,0 +1,24 @@
+/* stylesBoutons.css */
+
+/* Style des boutons */
+.custom-button {
+    -fx-background-color: #4CAF50; /* Couleur de fond */
+    -fx-text-fill: white; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-font-weight: bold; /* Poids de la police */
+    -fx-padding: 8px 16px; /* Espacement du texte à l'intérieur du bouton */
+    -fx-border-radius: 20; /* Rayon de bordure */
+    -fx-background-radius: 20; /* Rayon de l'arrière-plan */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 1); /* Ombre portée */
+}
+
+/* Style des boutons au survol de la souris */
+.custom-button:hover {
+    -fx-background-color: linear-gradient(to bottom, #FF5733, #FF5733); /* Dégradé de rouge au survol */
+}
+
+/* Style des boutons lorsque cliqués */
+.custom-button:pressed {
+    -fx-background-color: linear-gradient(to bottom, #FF5733, #FF5733); /* Dégradé de rouge lorsqu'il est cliqué */
+}
+
