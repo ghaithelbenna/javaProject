@@ -6,6 +6,7 @@ import tn.esprit.models.typePack;
 import tn.esprit.utils.MyDataBase;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -129,21 +130,9 @@ public class ServicePack implements IService<Pack> {
             return false;
         }
     }
-    private List<Pack> filteredPacks = new ArrayList<>();
 
-    public List<Pack> search(String keyword) {
-        filteredPacks.clear(); // Réinitialisez la liste des packs filtrés à chaque recherche
 
-        List<Pack> allPacks = getAll(); // Récupérez tous les packs
 
-        for (Pack pack : allPacks) {
-            if (pack.getNomPack().contains(keyword) ||
-                    pack.getDescriptionPack().contains(keyword) ||
-                    pack.getTypePack().getNomTypePack().contains(keyword)) {
-                filteredPacks.add(pack);
-            }
-        }
 
-        return filteredPacks;
-    }
+
 }

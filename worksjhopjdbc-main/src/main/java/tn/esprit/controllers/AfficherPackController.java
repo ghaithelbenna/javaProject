@@ -1,4 +1,7 @@
 package tn.esprit.controllers;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.KeyEvent;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -21,13 +24,12 @@ import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import tn.esprit.models.Pack;
 import tn.esprit.services.ServicePack;
+import tn.esprit.utils.TriCritere;
+
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.EventObject;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class AfficherPackController implements Initializable {
 
@@ -41,11 +43,15 @@ public class AfficherPackController implements Initializable {
     private Button searchButton;
 
     private final ServicePack sp = new ServicePack();
-
+    private ToggleGroup toggleGroup;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        toggleGroup = new ToggleGroup();
+        prixRadioButton.setToggleGroup(toggleGroup);
+        dateRadioButton.setToggleGroup(toggleGroup);
+        disponibiliteRadioButton.setToggleGroup(toggleGroup);
         affichage();
-        searchButton.setOnAction(this::search);
+
     }
 
     public void affichage() {
@@ -174,12 +180,93 @@ public class AfficherPackController implements Initializable {
         }
     }
 
+
     @FXML
-    void search(ActionEvent event) {
-        String keyword = searchField.getText();
-        List<Pack> searchResults = sp.search(keyword);
+    void search(KeyEvent event) {
+        String keyword = searchField.getText().toLowerCase();
+        List<Pack> allPacks = sp.afficherListe();
         pnItems.getChildren().clear();
-        for (Pack pack : searchResults) {
+
+        for (Pack pack : allPacks) {
+            // Vérifier si le pack correspond au critère de recherche
+            if (pack.getNomPack().toLowerCase().contains(keyword) ||
+                    String.valueOf(pack.getPrix()).contains(keyword) ||
+                    (pack.getTypePack() != null && pack.getTypePack().getNomTypePack().toLowerCase().contains(keyword)) ||
+                    (pack.getDate() != null && pack.getDate().toString().toLowerCase().contains(keyword))) {
+
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/ItemP.fxml"));
+                    HBox node = loader.load();
+
+                    ItemPController itemController = loader.getController();
+                    itemController.initData(pack, this);
+
+                    pnItems.getChildren().add(node); // Ajouter le pack à la liste affichée
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+    }
+
+    @FXML
+    private RadioButton prixRadioButton;
+
+    @FXML
+    private RadioButton dateRadioButton;
+
+    @FXML
+    private RadioButton disponibiliteRadioButton;
+
+    @FXML
+    void triParPrix(ActionEvent event) {
+        trierPacks(TriCritere.PRIX, true); // Tri croissant par prix
+    }
+
+    @FXML
+    void triParDate(ActionEvent event) {
+        trierPacks(TriCritere.DATE, true); // Tri croissant par date
+    }
+
+    @FXML
+    void triParDisponibilite(ActionEvent event) {
+        trierPacks(TriCritere.DISPO, true); // Tri croissant par disponibilité
+    }
+
+    private void trierPacks(TriCritere triCritere, boolean croissant) {
+        // Récupérer la liste des packs à partir de votre service ou de toute autre source de données
+        List<Pack> packs = sp.afficherListe();
+
+        // Définir le comparateur en fonction du critère de tri sélectionné
+        Comparator<Pack> comparator = null;
+        switch (triCritere) {
+            case PRIX:
+                comparator = Comparator.comparing(Pack::getPrix);
+                break;
+            case DATE:
+                comparator = Comparator.comparing(Pack::getDate);
+                break;
+            case DISPO:
+                comparator = Comparator.comparing(Pack::isDisponible);
+                break;
+            default:
+                // Gérer les cas non pris en charge, si nécessaire
+                break;
+        }
+
+        // Inverser l'ordre du tri si nécessaire
+        if (!croissant) {
+            comparator = comparator.reversed();
+        }
+
+        // Trier la liste des packs en utilisant le comparateur
+        packs.sort(comparator);
+
+        // Effacer les éléments actuels de la liste
+        pnItems.getChildren().clear();
+
+        // Afficher les packs triés
+        for (Pack pack : packs) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/ItemP.fxml"));
                 HBox node = loader.load();
@@ -187,7 +274,7 @@ public class AfficherPackController implements Initializable {
                 ItemPController itemController = loader.getController();
                 itemController.initData(pack, this);
 
-                pnItems.getChildren().add(node);
+                pnItems.getChildren().add(node); // Ajouter le pack à la liste affichée
             } catch (IOException ex) {
                 ex.printStackTrace();
             }

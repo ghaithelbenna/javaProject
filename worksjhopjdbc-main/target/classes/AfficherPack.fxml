@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.RadioButton?>
 <BorderPane prefHeight="723.0" prefWidth="1550.0" stylesheets="stylepack.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPackController">
    <left>
       <VBox prefHeight="678.0" prefWidth="657.0">
@@ -18,11 +19,19 @@
                <children>
                   <AnchorPane prefHeight="100.0" prefWidth="216.0">
                      <children>
-                        <TextField fx:id="searchField" />
-                        <Button fx:id="searchButton" />
+                        <TextField fx:id="searchField" onKeyReleased="#search" />
                         <Button layoutX="17.0" layoutY="112.0" onAction="#genererPDF" text="Export PDF" />
+                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                           <children>
+                              <RadioButton text="Prix" onAction="#triParPrix" fx:id="prixRadioButton" />
+                              <RadioButton text="Date" onAction="#triParDate" fx:id="dateRadioButton" />
+                              <RadioButton text="Disponibilité" onAction="#triParDisponibilite" fx:id="disponibiliteRadioButton" />
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
+
+
                   <AnchorPane prefHeight="678.0" prefWidth="448.0">
                      <children>
                         <VBox prefHeight="678.0" prefWidth="1358.0" styleClass="vbox-content">

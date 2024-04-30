@@ -95,4 +95,6 @@ public class ServiceTypePack {
             // Gérer l'exception de manière appropriée
         }
     }
+
+
 }

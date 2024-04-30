@@ -1,92 +1,122 @@
 package tn.esprit.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.scene.control.Label;
+import javafx.scene.control.Pagination;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import tn.esprit.controllers.CarteItemController;
 import tn.esprit.models.Pack;
 import tn.esprit.services.ServicePack;
 
-import java.io.IOException;
-import java.util.EventObject;
+import java.net.URL;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.ResourceBundle;
 
-public class AffichageFrontController {
+public class AffichageFrontController implements Initializable {
 
     @FXML
-    private VBox vboxPacks;
+    private TilePane biensContainer;
+
+    @FXML
+    private Pagination pagination;
 
     private final ServicePack servicePack = new ServicePack();
+    private List<Pack> packs;
+    private static final int ITEMS_PER_PAGE = 8;
+    private static final int PACKS_PER_ROW = 4;
 
-    public void initialize() {
-        afficherPacks();
-    }
-
-    private void afficherPacks() {
-        // Nettoyer le contenu précédent
-        vboxPacks.getChildren().clear();
-
-        // Récupérer la liste des packs depuis le service
-        List<Pack> packs = servicePack.afficherListe();
-
-        // Ajouter les cartes des packs à l'interface utilisateur
-        for (Pack pack : packs) {
-            try {
-                // Charger la carte FXML
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Carte.fxml"));
-                AnchorPane carteNode = loader.load();
-
-                // Récupérer le contrôleur de la carte
-                CarteItemController carteController = loader.getController();
-
-                // Initialiser les données de la carte avec le pack actuel
-                carteController.initData(pack);
-
-                // Ajouter la carte à la liste des cartes
-                vboxPacks.getChildren().add(carteNode);
-            } catch (IOException e) {
-                e.printStackTrace();
-                // Gérer l'exception IOException ici
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            packs = getPacks();
+            if (!packs.isEmpty()) {
+                System.out.println("Nombre total de packs : " + packs.size());
+                configurePagination();
+                updateDisplayedPacks(0); // Afficher les packs de la première page au démarrage
+            } else {
+                System.out.println("La liste de packs est vide.");
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
-    private void navigate(String fxmlFile, EventObject event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+
+
+
+    private void updateDisplayedPacks(int pageIndex) {
+        System.out.println("Mise à jour des packs affichés pour la page " + pageIndex);
+        biensContainer.getChildren().clear();
+        int startIndex = pageIndex * ITEMS_PER_PAGE;
+        int endIndex = Math.min(startIndex + ITEMS_PER_PAGE, packs.size());
+        List<Pack> packsToDisplay = packs.subList(startIndex, endIndex);
+        addPacksToRow(packsToDisplay);
     }
 
-    @FXML
-    void afficherPack(ActionEvent actionEvent) throws IOException {
-        navigate("/AfficherPack.fxml", actionEvent);
+
+    private void configurePagination() {
+        int pageCount = (int) Math.ceil((double) packs.size() / ITEMS_PER_PAGE);
+        pagination.setPageCount(pageCount);
+        System.out.println("Pagination configurée avec " + pageCount + " pages.");
+        pagination.currentPageIndexProperty().addListener((obs, oldIndex, newIndex) -> {
+            int newIndexValue = newIndex.intValue();
+            System.out.println("Changement de page vers la page " + newIndexValue);
+            updateDisplayedPacks(newIndexValue);
+        });
     }
 
 
-    public void ajouterPack(ActionEvent actionEvent)throws IOException {
-        navigate("/Pack.fxml", actionEvent);
+
+    private void addPacksToRow(List<Pack> rowPacks) {
+        for (Pack pack : rowPacks) {
+            StackPane bienCard = new StackPane();
+            bienCard.getStyleClass().add("bien-card");
+
+            VBox bienBox = new VBox();
+            bienBox.setSpacing(5);
+
+            ImageView imageView = new ImageView();
+            imageView.setFitWidth(100);
+            imageView.setPreserveRatio(true);
+
+            try {
+                String imagePath = pack.getImage();
+                if (imagePath != null && !imagePath.isEmpty()) {
+                    Image image = new Image("file:" + imagePath);
+                    imageView.setImage(image);
+                }
+            } catch (Exception e) {
+                System.out.println("Erreur lors du chargement de l'image : " + e.getMessage());
+            }
+
+            Label nomPackLabel = new Label("Nom : " + pack.getNomPack());
+            Label prixLabel = new Label("Prix : " + pack.getPrix());
+            Label typeLabel = new Label("Type : " + pack.getTypePack());
+            Label disponibiliteLabel = new Label("Disponible : " + (pack.isDisponible() ? "Oui" : "Non"));
+
+            bienBox.getChildren().addAll(imageView, nomPackLabel, prixLabel, typeLabel, disponibiliteLabel);
+            bienBox.getStyleClass().add("bien-details");
+            StackPane.setMargin(bienBox, new Insets(10));
+
+            bienCard.getChildren().add(bienBox);
+            biensContainer.getChildren().add(bienCard);
+            System.out.println("Ajout du pack : " + pack.getNomPack());
+        }
     }
 
-    public void affichercategorie(ActionEvent actionEvent) throws IOException{
-        navigate("/affichageCategorie.fxml", actionEvent);
-    }
 
-    public void ajoutercategorie(ActionEvent actionEvent)throws IOException{
-        navigate("/AjoutCategorie.fxml", actionEvent);
-    }
-
-    public void affichertypePack(ActionEvent actionEvent) throws IOException{
-        navigate("/AffichageTypePack.fxml", actionEvent);
-    }
-
-    public void ajoutertypePack(ActionEvent actionEvent) throws IOException{
-        navigate("/ajoutTypePack.fxml", actionEvent);
+    private List<Pack> getPacks() throws SQLException {
+        List<Pack> packs = servicePack.afficherListe();
+        if (packs != null && !packs.isEmpty()) {
+            System.out.println("Liste des packs récupérée avec succès.");
+        } else {
+            System.out.println("La liste des packs est vide ou n'a pas pu être récupérée.");
+        }
+        return packs;
     }
 }

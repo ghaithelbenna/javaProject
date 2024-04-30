@@ -17,6 +17,7 @@ import tn.esprit.models.Pack;
 import tn.esprit.services.ServicePack;
 import tn.esprit.models.typePack;
 import tn.esprit.services.ServiceTypePack;
+import tn.esprit.services.TypePackService;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
@@ -54,7 +55,7 @@ public class PackController {
     private boolean disponible;
     private final ServicePack sp = new ServicePack();
     // Service pour récupérer les types de pack
-    private final ServiceTypePack serviceTypePack = new ServiceTypePack();
+    private final TypePackService serviceTypePack = new TypePackService();
     @FXML
     void initialize() throws SQLException {
         // Initialiser la ComboBox avec les types de pack disponibles
@@ -93,23 +94,28 @@ public class PackController {
     }
     @FXML
     void ajouter(ActionEvent event) {
+        // Vérifier la validité des champs
+        if (!validateInputFields()) {
+            return;
+        }
+
         // Vérifier si une image a été sélectionnée
         if (image == null) {
-            System.out.println("Veuillez sélectionner une image.");
+            showAlert("Erreur", "Veuillez sélectionner une image.");
             return; // Arrêter la méthode si aucune image n'a été sélectionnée
         }
 
         LocalDate localDate = DateT.getValue();
         if (localDate == null) {
-            showAlert("Date invalide", "Veuillez sélectionner une date.");
+            showAlert("Erreur", "Veuillez sélectionner une date.");
             return; // Stop method execution if no date is selected
         }
         Date sqlDate = Date.valueOf(localDate);
 
         typePack selectedTypePack = TypePackComboBox.getValue();
-        if (selectedTypePack == null) {
-            System.out.println("Veuillez sélectionner un type de pack.");
-            return; // Arrêter la méthode si aucun type de pack n'a été sélectionné
+        if (selectedTypePack == null || !serviceTypePack.isTypePackExists(selectedTypePack.getId_typepack())) {
+            showAlert("Erreur", "Le type de pack sélectionné n'existe pas.");
+            return; // Arrêter la méthode si le type de pack sélectionné n'existe pas
         }
 
         // Ajouter le pack en utilisant les données saisies dans les champs, l'image sélectionnée et le type de pack
@@ -123,16 +129,14 @@ public class PackController {
                 image,
                 DisponibleT.isSelected()
         );
+
         sp.add(pack);
 
         // Afficher un message de confirmation
-        System.out.println("Pack ajouté avec succès : " + pack.getNomPack());
-        System.out.println("Description : " + pack.getDescriptionPack());
-        System.out.println("Prix : " + pack.getPrix());
-        System.out.println("Date : " + pack.getDate().toString());
-        System.out.println("Image : " + pack.getImage());
-        System.out.println("Type de pack : " + pack.getTypePack().getNomTypePack());
+        showAlert("Succès", "Pack ajouté avec succès : " + pack.getNomPack());
     }
+
+
 
 
     @FXML

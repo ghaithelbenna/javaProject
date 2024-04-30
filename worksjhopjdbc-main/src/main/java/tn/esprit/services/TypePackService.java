@@ -91,4 +91,17 @@ public class TypePackService {
         }
         return false;
     }
+    public boolean isTypePackExists(int typePackId) {
+        String query = "SELECT COUNT(*) FROM typepack WHERE id_typepack = ?";
+        try (PreparedStatement stm = cnx.prepareStatement(query)) {
+            stm.setInt(1, typePackId);
+            ResultSet rs = stm.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1) > 0; // Retourne true si au moins un type de pack existe avec l'ID spécifié
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
