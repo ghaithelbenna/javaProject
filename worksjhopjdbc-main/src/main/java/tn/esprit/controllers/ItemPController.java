@@ -50,10 +50,10 @@ public class ItemPController {
         this.afficherPackController = afficherPackController;
 
         // Afficher les informations du pack dans les labels correspondants
-        typePack.setText(String.valueOf(pack.getId_typepack()));
+        typePack.setText(pack.getTypePack().getNomTypePack());
         nomPack.setText(pack.getNomPack());
         descriptionPack.setText(pack.getDescriptionPack());
-        prix.setText(String.valueOf(pack.getprix()));
+        prix.setText(String.valueOf(pack.getPrix()));
         date.setText(String.valueOf(pack.getDate()));
         disponible.setText(pack.isDisponible() ? "Disponible" : "Non disponible");
 
@@ -74,7 +74,7 @@ public class ItemPController {
         alert.setHeaderText(null);
         alert.setContentText("Nom: " + pack.getNomPack() + "\n"
                 + "Description: " + pack.getDescriptionPack() + "\n"
-                + "Prix: " + pack.getprix() + "\n"
+                + "Prix: " + pack.getPrix() + "\n"
                 + "Date: " + pack.getDate() + "\n"
                 + "Disponible: " + (pack.isDisponible() ? "Oui" : "Non"));
         alert.showAndWait();

@@ -113,18 +113,26 @@ public class PackController {
         }
 
         // Ajouter le pack en utilisant les données saisies dans les champs, l'image sélectionnée et le type de pack
-        sp.add(new Pack(selectedTypePack.getId_typepack(), 1, NomT.getText(), DescriptionT.getText(), Double.parseDouble(PrixT.getText()), sqlDate, image, DisponibleT.isSelected()));
+        Pack pack = new Pack(
+                selectedTypePack.getId_typepack(),
+                selectedTypePack,
+                NomT.getText(),
+                DescriptionT.getText(),
+                Double.parseDouble(PrixT.getText()),
+                sqlDate,
+                image,
+                DisponibleT.isSelected()
+        );
+        sp.add(pack);
 
         // Afficher un message de confirmation
-        System.out.println("Pack ajouté avec succès : " + NomT.getText());
-        System.out.println("Description : " + DescriptionT.getText());
-        System.out.println("Prix : " + PrixT.getText());
-        System.out.println("Date : " + sqlDate.toString());
-        System.out.println("Image : " + image);
-        System.out.println("Type de pack : " + selectedTypePack.getNomTypePack());
-
+        System.out.println("Pack ajouté avec succès : " + pack.getNomPack());
+        System.out.println("Description : " + pack.getDescriptionPack());
+        System.out.println("Prix : " + pack.getPrix());
+        System.out.println("Date : " + pack.getDate().toString());
+        System.out.println("Image : " + pack.getImage());
+        System.out.println("Type de pack : " + pack.getTypePack().getNomTypePack());
     }
-
 
 
     @FXML

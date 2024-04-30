@@ -16,13 +16,5 @@
     <effect>
         <DropShadow blurType="GAUSSIAN" height="5.0" radius="2.0" width="5.0" />
     </effect>
-    <ToolBar layoutX="0" layoutY="0" prefWidth="875">
-        <!-- Ajoutez vos éléments de barre de navigation ici -->
-        <Button text="afficher Pack" onAction="#afficherPack" />
-        <Button text="ajouter Pack" onAction="#ajouterPack" />
-        <Button text="afficher categorie" onAction="#affichercategorie" />
-        <Button text="ajouter categorie" onAction="#ajoutercategorie" />
-        <Button text="afficher type Pack" onAction="#affichertypePack" />
-        <Button text="ajouter type Pack" onAction="#ajoutertypePack" />
-    </ToolBar>
+
 </HBox>

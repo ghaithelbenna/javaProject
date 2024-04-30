@@ -1,6 +1,7 @@
 package tn.esprit.models;
 
 import java.util.Date;
+
 public class Pack {
 
     private int id;
@@ -10,37 +11,18 @@ public class Pack {
     private Date date;
     private String image;
     private boolean disponible;
+    private typePack typePack;
 
-    public Pack(int id, int id_typepack,String nomPack, String descriptionPack, String prix, double date, java.sql.Date image, String disponible ) {
-    }
-
-    public Pack(int id,int id_typepack, String nomPack, String descriptionPack, double prix, Date date, String image, boolean disponible) {
+    public Pack(int id, typePack typePack, String nomPack, String descriptionPack, double prix, Date date, String image, boolean disponible) {
         this.id = id;
-        this.id_typepack = id_typepack;
+        this.typePack = typePack;
         this.nomPack = nomPack;
         this.descriptionPack = descriptionPack;
         this.prix = prix;
         this.date = date;
         this.image = image;
         this.disponible = disponible;
-
     }
-
-
-    public double getPrix() {
-        return prix;
-    }
-
-    public int getId_typepack() {
-        return id_typepack;
-    }
-
-    public void setId_typepack(int id_typepack) {
-        this.id_typepack = id_typepack;
-    }
-
-    private int id_typepack;
-
 
     public int getId() {
         return id;
@@ -48,6 +30,14 @@ public class Pack {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public typePack getTypePack() {
+        return typePack;
+    }
+
+    public void setTypePack(typePack typePack) {
+        this.typePack = typePack;
     }
 
     public String getNomPack() {
@@ -66,7 +56,7 @@ public class Pack {
         this.descriptionPack = descriptionPack;
     }
 
-    public double getprix() {
+    public double getPrix() {
         return prix;
     }
 
@@ -108,7 +98,7 @@ public class Pack {
                 ", date=" + date +
                 ", image='" + image + '\'' +
                 ", disponible=" + disponible +
-                ", id_typepack=" + id_typepack +
+                ", typePack=" + typePack +
                 '}';
     }
 }

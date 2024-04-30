@@ -6,10 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.models.typePack;
-import tn.esprit.services.ServiceTypePack;
+import tn.esprit.services.TypePackService;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,32 +23,38 @@ public class AjoutTypePackController {
     private TextField nomTypePackTextField;
 
     // Instanciation du service pour gérer les types de pack
-    private final ServiceTypePack serviceTypePack = new ServiceTypePack();
+    private final TypePackService serviceTypePack = new TypePackService();
+
 
     @FXML
     void ajouter(ActionEvent event) {
-        // Récupérer le nom du type de pack saisi par l'utilisateur
         String nomTypePack = nomTypePackTextField.getText();
-
-        // Vérifier si le champ de texte n'est pas vide
         if (!nomTypePack.isEmpty()) {
-            // Créer un nouvel objet typePack avec le nom saisi
             typePack nouveauTypePack = new typePack();
             nouveauTypePack.setNomTypePack(nomTypePack);
-
-            try {
-                // Ajouter le nouveau type de pack à la base de données
-                serviceTypePack.ajouterTypePack(nouveauTypePack);
-
-                // Vous pouvez également ajouter un message de confirmation ici
-            } catch (SQLException e) {
-                e.printStackTrace();
-                // Gérer les erreurs liées à l'ajout du type de pack à la base de données
-            }
+            serviceTypePack.add(nouveauTypePack);
+            afficherMessageConfirmation("Type de pack ajouté avec succès !");
         } else {
-            // Afficher un message d'erreur ou effectuer une autre action appropriée si le champ est vide
+            afficherMessageErreur("Veuillez saisir un nom pour le type de pack.");
         }
     }
+
+    private void afficherMessageConfirmation(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Succès");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private void afficherMessageErreur(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     private void navigate(String fxmlFile, EventObject event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));

@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9e1169fe-d9ae-4b83-a05f-62f666325420" name="Changes" comment="" />
+    <list default="true" id="9e1169fe-d9ae-4b83-a05f-62f666325420" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/resources/stylepack.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/2rism.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/2rism.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/AfficherPackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/AfficherPackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/AjoutTypePackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/AjoutTypePackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/CarteItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/CarteItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/ItemPController.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/ItemPController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/ModifierPackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/ModifierPackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/PackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/controllers/PackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/models/Pack.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/models/Pack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/models/typePack.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/models/typePack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/services/ServicePack.java" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/java/tn/esprit/services/ServicePack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/resources/AfficherPack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/resources/AfficherPack.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/resources/Itempk.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/resources/Itempk.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/resources/Pack.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/worksjhopjdbc-main/src/main/resources/Pack.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,11 +33,14 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -84,7 +104,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="tn.esprit.test.MainFX" />
-      <module name="workshopjdbc3a25" />
+      <module name="2rism" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\JAVA\javafx-sdk-22\lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
         <pattern>
@@ -131,6 +151,10 @@
       <workItem from="1713931687891" duration="9858000" />
       <workItem from="1713942812576" duration="185000" />
       <workItem from="1713943038138" duration="1729000" />
+      <workItem from="1713948272292" duration="739000" />
+      <workItem from="1713950227909" duration="2477000" />
+      <workItem from="1714292708653" duration="17850000" />
+      <workItem from="1714409323433" duration="9535000" />
     </task>
     <servers />
   </component>

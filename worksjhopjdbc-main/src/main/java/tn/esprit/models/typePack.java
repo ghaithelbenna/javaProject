@@ -22,9 +22,8 @@ public class typePack {
 
     @Override
     public String toString() {
-        return "typePack{" +
+        return
 
-                " nomTypePack='" + nomTypePack + '\'' +
-                '}';
+                 nomTypePack ;
     }
 }

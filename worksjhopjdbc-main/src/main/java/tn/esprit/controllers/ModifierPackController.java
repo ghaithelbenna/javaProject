@@ -106,7 +106,7 @@ public class ModifierPackController {
         if (pack != null) {
             NomT.setText(pack.getNomPack());
             DescriptionT.setText(pack.getDescriptionPack());
-            PrixT.setText(String.valueOf(pack.getprix()));
+            PrixT.setText(String.valueOf(pack.getPrix()));
             if (pack.getDate() != null) {
                 DateT.setValue(LocalDate.ofEpochDay(pack.getDate().getDate()));
             }

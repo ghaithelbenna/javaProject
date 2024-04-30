@@ -36,7 +36,7 @@ public class CarteItemController {
         // Afficher les informations du pack dans les labels correspondants
         nomPack.setText(pack.getNomPack());
         descriptionPack.setText(pack.getDescriptionPack());
-        prix.setText(String.valueOf(pack.getprix()));
+        prix.setText(String.valueOf(pack.getPrix()));
         date.setText(String.valueOf(pack.getDate()));
         disponible.setText(pack.isDisponible() ? "Disponible" : "Non disponible");
 
