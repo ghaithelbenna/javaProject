@@ -16,10 +16,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
-        <option value="Class" />
         <option value="CSS File" />
         <option value="Enum" />
+        <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -61,6 +61,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="tn.esprit.services" />
       <recent name="tn.esprit.controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -139,7 +140,7 @@
       <workItem from="1713950227909" duration="2477000" />
       <workItem from="1714292708653" duration="17850000" />
       <workItem from="1714409323433" duration="12066000" />
-      <workItem from="1714465798517" duration="13520000" />
+      <workItem from="1714465798517" duration="22450000" />
     </task>
     <servers />
   </component>
