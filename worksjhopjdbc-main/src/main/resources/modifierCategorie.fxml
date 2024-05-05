@@ -10,7 +10,7 @@
 
     <VBox alignment="CENTER" spacing="10">
         <Label text="Modifier la catégorie" style="-fx-font-size: 16px; -fx-font-weight: bold;" />
-
+        <Button text="Retour à la liste" onAction="#retourALaListe" />
         <HBox spacing="10">
             <Label text="Nom de la catégorie :" />
             <TextField fx:id="nomCategorieTextField" />

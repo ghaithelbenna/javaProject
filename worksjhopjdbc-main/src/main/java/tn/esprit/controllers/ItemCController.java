@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import tn.esprit.models.categorie;
 import tn.esprit.services.CategorieService;
@@ -24,12 +26,15 @@ public class ItemCController {
     @FXML
     private Label nomcategorie;
 
-    private categorie categorie;
 
     private final CategorieService categorieService = new CategorieService();
+    private categorie categorie;
+    private AffichageCategorieController affichageCategorieController;
 
-    public void initData(categorie categorie) {
+    public void initData(categorie categorie, AffichageCategorieController affichageCategorieController) {
         this.categorie = categorie;
+        this.affichageCategorieController = affichageCategorieController;
+
         nomcategorie.setText(categorie.getNomcategorie());
     }
 
@@ -57,57 +62,59 @@ public class ItemCController {
         // Attend la réponse de l'utilisateur
         Optional<ButtonType> result = confirmationAlert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            // Vérifier s'il existe des enregistrements liés à cette catégorie
-            boolean enregistrementsLiesExistants = categorieService.supprimerCategorie(categorie);
-
-            if (enregistrementsLiesExistants) {
-                // Afficher une alerte pour informer l'utilisateur que des enregistrements sont liés à cette catégorie
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Suppression impossible");
+            // Supprimer la catégorie
+            boolean suppressionReussie = categorieService.supprimerCategorie(categorie);
+            if (suppressionReussie) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Suppression réussie");
                 alert.setHeaderText(null);
-                alert.setContentText("Des enregistrements sont associés à cette catégorie. Veuillez d'abord supprimer les enregistrements associés.");
+                alert.setContentText("La catégorie a été supprimée avec succès !");
                 alert.showAndWait();
+
+                // Rafraîchir les données après la suppression
+                affichageCategorieController.affichage();
             } else {
-                // Si aucun enregistrement n'est associé, procéder à la suppression
-                boolean suppressionReussie = categorieService.supprimerCategorie(categorie);
-                if (suppressionReussie) {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Suppression réussie");
-                    alert.setHeaderText(null);
-                    alert.setContentText("La catégorie a été supprimée avec succès !");
-                    alert.showAndWait();
-                } else {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Erreur");
-                    alert.setHeaderText(null);
-                    alert.setContentText("Erreur lors de la suppression de la catégorie !");
-                    alert.showAndWait();
-                }
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setHeaderText(null);
+                alert.setContentText("Erreur lors de la suppression de la catégorie !");
+                alert.showAndWait();
             }
         }
     }
 
 
+    public void setAffichageCategorieController(AffichageCategorieController affichageCategorieController) {
+        this.affichageCategorieController = affichageCategorieController;
+    }
+
+    // Méthode modifierCategorie mise à jour avec une meilleure gestion des exceptions
     @FXML
     void modifierCategorie(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCategorie.fxml"));
-        Parent modifierCategorieParent;
         try {
-            modifierCategorieParent = loader.load();
+            // Charger le fichier FXML de la page de modification
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifierCategorie.fxml"));
+            Parent root = loader.load();
+
+            // Obtenez le contrôleur ModifierCategorieController
+            ModifierCategorieController controller = loader.getController();
+
+            // Initialisez les données dans le contrôleur
+            controller.initData(categorie, affichageCategorieController);
+
+            // Accédez au parent du HBox (itemCC)
+            Scene currentScene = itemCC.getScene();
+            Parent parent = currentScene.getRoot();
+
+            // Remplacez le contenu actuel par le contenu de la page de modification
+            ((AnchorPane) parent).getChildren().setAll(root);
+
         } catch (IOException e) {
             afficherAlerteErreur("Erreur lors du chargement de la page de modification !");
-            return;
         }
-
-        ModifierCategorieController modifierCategorieController = loader.getController();
-        modifierCategorieController.initData(categorie);
-
-        Scene modifierCategorieScene = new Scene(modifierCategorieParent);
-        Stage stage = new Stage();
-        stage.setTitle("Modifier la catégorie");
-        stage.setScene(modifierCategorieScene);
-        stage.show();
     }
+
+
 
     private void afficherAlerteErreur(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -125,6 +132,5 @@ public class ItemCController {
         alert.showAndWait();
     }
 
-    public void setAffichageCategorieController(AffichageCategorieController affichageCategorieController) {
-    }
+
 }

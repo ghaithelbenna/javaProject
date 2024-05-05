@@ -23,13 +23,13 @@ public class ModifierCategorieController {
     private categorie categorie;
 
     private final CategorieService categorieService = new CategorieService();
-
-    public void initData(categorie categorie) {
+    private AffichageCategorieController affichageCategorieController;
+    public void initData(categorie categorie, AffichageCategorieController affichageCategorieController) {
         this.categorie = categorie;
-        nomCategorieTextField.setText(categorie.getNomcategorie());
+        this.affichageCategorieController = affichageCategorieController;
     }
 
-    @FXML
+        @FXML
     void modifierCategorie(ActionEvent actionEvent) {
         String nouveauNomCategorie = nomCategorieTextField.getText();
 
@@ -94,4 +94,25 @@ public class ModifierCategorieController {
     public void ajoutertypePack(ActionEvent actionEvent) throws IOException{
         navigate("/ajoutTypePack.fxml", actionEvent);
     }
+    @FXML
+    void retourALaListe(ActionEvent event) {
+        try {
+            // Charger le fichier FXML de la vue de la liste des catégories
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AffichageCategorie.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Accéder à la fenêtre principale
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la scène sur la fenêtre principale
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            afficherAlerteErreur("Erreur lors du chargement de la liste des catégories !");
+        }
+    }
+
 }

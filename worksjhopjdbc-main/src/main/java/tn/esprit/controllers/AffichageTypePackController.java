@@ -92,4 +92,5 @@ public class AffichageTypePackController implements Initializable {
     public void ajoutertypePack(ActionEvent actionEvent) throws IOException{
         navigate("/ajoutTypePack.fxml", actionEvent);
     }
+
 }

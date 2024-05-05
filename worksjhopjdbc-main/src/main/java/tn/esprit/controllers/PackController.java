@@ -16,7 +16,6 @@ import javafx.util.converter.DoubleStringConverter;
 import tn.esprit.models.Pack;
 import tn.esprit.services.ServicePack;
 import tn.esprit.models.typePack;
-import tn.esprit.services.ServiceTypePack;
 import tn.esprit.services.TypePackService;
 import java.io.File;
 import java.io.IOException;

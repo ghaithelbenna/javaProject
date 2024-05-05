@@ -60,19 +60,33 @@ public class TypePackService {
     }
 
     public boolean delete(typePack typePack) {
-        String query = "DELETE FROM typepack WHERE id_typepack = ?";
-        try (PreparedStatement stm = cnx.prepareStatement(query)) {
-            stm.setInt(1, typePack.getId_typepack());
-            int rowsDeleted = stm.executeUpdate();
-            if (rowsDeleted > 0) {
-                System.out.println("TypePack supprimé avec succès !");
-                return true;
+        // Vérifiez d'abord si le type de pack existe
+        if (isTypePackExists(typePack.getId_typepack())) {
+            // S'il existe, vérifiez s'il y a des enregistrements de pack liés à ce type de pack
+            if (packExistsForTypePack(typePack)) {
+                System.out.println("Des packs sont associés à ce type de pack. Veuillez d'abord supprimer les packs associés.");
+                return false; // Ne supprimez pas le type de pack s'il est lié à des packs
             } else {
-                System.out.println("Aucun TypePack supprimé !");
-                return false;
+                // S'il n'y a pas de packs associés, supprimez le type de pack
+                String query = "DELETE FROM typepack WHERE id_typepack = ?";
+                try (PreparedStatement stm = cnx.prepareStatement(query)) {
+                    stm.setInt(1, typePack.getId_typepack());
+                    int rowsDeleted = stm.executeUpdate();
+                    if (rowsDeleted > 0) {
+                        System.out.println("TypePack supprimé avec succès !");
+                        return true;
+                    } else {
+                        System.out.println("Aucun TypePack supprimé !");
+                        return false;
+                    }
+                } catch (SQLException e) {
+                    System.out.println("Erreur lors de la suppression du TypePack : " + e.getMessage());
+                    return false;
+                }
             }
-        } catch (SQLException e) {
-            System.out.println("Erreur lors de la suppression du TypePack : " + e.getMessage());
+        } else {
+            // Si le type de pack n'existe pas, affichez un message approprié
+            System.out.println("Le type de pack avec l'ID spécifié n'existe pas !");
             return false;
         }
     }

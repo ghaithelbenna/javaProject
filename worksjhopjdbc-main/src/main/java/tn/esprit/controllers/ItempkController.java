@@ -2,13 +2,18 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 import tn.esprit.models.typePack;
 import tn.esprit.services.TypePackService;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class ItempkController {
@@ -21,6 +26,7 @@ public class ItempkController {
 
     private TypePackService typePackService;
     private typePack typePack;
+    private AffichageTypePackController affichageTypePackController;
 
     public ItempkController() {
         this.typePackService = new TypePackService();
@@ -42,23 +48,26 @@ public class ItempkController {
 
     @FXML
     void modifierTypePack(ActionEvent event) {
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Modification du TypePack");
-        dialog.setHeaderText("Modifier le nom du TypePack");
-        dialog.setContentText("Nouveau nom :");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/modifierTypePack.fxml"));
+            Parent root = loader.load();
 
-        Optional<String> result = dialog.showAndWait();
-        result.ifPresent(nouveauNom -> {
-            typePack.setNomTypePack(nouveauNom);
-            typePackService.update(typePack);
-            // Afficher une boîte de dialogue ou un message pour confirmer la modification réussie
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Modification réussie");
-            alert.setHeaderText(null);
-            alert.setContentText("Le type pack a été modifié avec succès !");
-            alert.showAndWait();
-        });
+            // Obtenez le contrôleur ModifierTypePackController
+            ModifierTypePackController controller = loader.getController();
+
+            // Initialisez les données dans le contrôleur
+            controller.initData(typePack, affichageTypePackController);
+
+            // Créez une nouvelle scène et définissez-la sur la fenêtre principale
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
 
 
     @FXML
@@ -82,6 +91,8 @@ public class ItempkController {
                 alert.setHeaderText(null);
                 alert.setContentText("Le type pack a été supprimé avec succès !");
                 alert.showAndWait();
+                // Rafraîchir automatiquement la liste des types de pack après la suppression
+                affichageTypePackController.affichage();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erreur");
@@ -92,7 +103,7 @@ public class ItempkController {
         }
     }
 
-
     public void setAffichageTypePackController(AffichageTypePackController affichageTypePackController) {
+        this.affichageTypePackController = affichageTypePackController;
     }
 }

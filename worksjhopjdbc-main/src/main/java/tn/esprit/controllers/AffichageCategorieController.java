@@ -42,7 +42,7 @@ public class AffichageCategorieController implements Initializable {
                 HBox node = loader.load();
 
                 ItemCController itemController = loader.getController();
-                itemController.initData(categorie);
+                itemController.initData(categorie, this); // Passer 'this' comme instance d'AffichageCategorieController
 
                 // Passer la référence à AffichageCategorieController à ItemCController
                 itemController.setAffichageCategorieController(this);
@@ -55,9 +55,8 @@ public class AffichageCategorieController implements Initializable {
     }
 
 
-    public void refreshData(ActionEvent actionEvent) {
-        affichage();
-    }
+
+
     private void navigate(String fxmlFile, EventObject event) throws IOException {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));

@@ -26,14 +26,6 @@
         <Button fx:id="ImageT" layoutX="142.0" layoutY="347.0" mnemonicParsing="false" onAction="#handleImageSelection" text="inserer image" />
         <CheckBox fx:id="DisponibleT" layoutX="271.0" layoutY="283.0" mnemonicParsing="false" text="Disponibilité" />
         <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="149.0" layoutX="289.0" layoutY="318.0" pickOnBounds="true" preserveRatio="true" />
-        <ToolBar layoutX="0" layoutY="0" prefWidth="875">
-            <!-- Ajoutez vos éléments de barre de navigation ici -->
-            <Button text="afficher Pack" onAction="#afficherPack" />
-            <Button text="ajouter Pack" onAction="#ajouterPack" />
-            <Button text="afficher categorie" onAction="#affichercategorie" />
-            <Button text="ajouter categorie" onAction="#ajoutercategorie" />
-            <Button text="afficher type Pack" onAction="#affichertypePack" />
-            <Button text="ajouter type Pack" onAction="#ajoutertypePack" />
-        </ToolBar>
+
     </children>
 </AnchorPane>

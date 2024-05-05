@@ -6,10 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import tn.esprit.models.typePack;
-import tn.esprit.services.ServiceTypePack;
+import tn.esprit.services.TypePackService;
 
 import java.io.IOException;
 import java.util.EventObject;
@@ -20,14 +21,14 @@ public class ModifierTypePackController {
     private TextField nouveauNomTypePackTextField;
 
     private typePack typePack;
-    private ServiceTypePack serviceTypePack;
+    private TypePackService TypePackservice;
     private AffichageTypePackController affichageTypePackController;
 
-    public void initData(typePack typePack, AffichageTypePackController afficherTypePackController) {
+    public void initData(typePack typePack, AffichageTypePackController affichageTypePackController) {
         this.typePack = typePack;
-        this.affichageTypePackController = afficherTypePackController;
+        this.affichageTypePackController = affichageTypePackController;
         nouveauNomTypePackTextField.setText(typePack.getNomTypePack());
-        serviceTypePack = new ServiceTypePack();
+        TypePackservice = new TypePackService();
     }
 
     @FXML
@@ -35,47 +36,19 @@ public class ModifierTypePackController {
         String nouveauNom = nouveauNomTypePackTextField.getText();
         if (!nouveauNom.isEmpty()) {
             typePack.setNomTypePack(nouveauNom);
-            serviceTypePack.update(typePack);
+            TypePackservice.update(typePack);
+
+            // Actualiser la liste affichée après modification
             affichageTypePackController.affichage();
+
+            // Afficher une boîte de dialogue ou un message pour confirmer la modification réussie
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Modification réussie");
+            alert.setHeaderText(null);
+            alert.setContentText("Le type pack a été modifié avec succès !");
+            alert.showAndWait();
         }
     }
 
 
-
-    public void setAffichageTypePackController(AffichageTypePackController affichageTypePackController) {
-        this.affichageTypePackController = affichageTypePackController;
-    }
-    private void navigate(String fxmlFile, EventObject event) throws IOException {
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Parent root = FXMLLoader.load(getClass().getResource(fxmlFile));
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    void afficherPack(ActionEvent actionEvent) throws IOException {
-        navigate("/AfficherPack.fxml", actionEvent);
-    }
-
-
-    public void ajouterPack(ActionEvent actionEvent)throws IOException {
-        navigate("/Pack.fxml", actionEvent);
-    }
-
-    public void affichercategorie(ActionEvent actionEvent) throws IOException{
-        navigate("/affichageCategorie.fxml", actionEvent);
-    }
-
-    public void ajoutercategorie(ActionEvent actionEvent)throws IOException{
-        navigate("/AjoutCategorie.fxml", actionEvent);
-    }
-
-    public void affichertypePack(ActionEvent actionEvent) throws IOException{
-        navigate("/AffichageTypePack.fxml", actionEvent);
-    }
-
-    public void ajoutertypePack(ActionEvent actionEvent) throws IOException{
-        navigate("/ajoutTypePack.fxml", actionEvent);
-    }
 }
