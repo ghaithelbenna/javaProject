@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
@@ -10,22 +11,23 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.ImageView?>
 <BorderPane prefHeight="723.0" prefWidth="1550.0" stylesheets="stylepack.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPackController">
    <left>
       <VBox prefHeight="678.0" prefWidth="657.0">
          <children>
             <HBox prefHeight="678.0" prefWidth="657.0">
                <children>
-                  <AnchorPane prefHeight="100.0" prefWidth="216.0">
+                  <AnchorPane prefHeight="100.0" prefWidth="300.0">
                      <children>
                         <TextField fx:id="searchField" onKeyReleased="#search" />
-                        <Button layoutX="17.0" layoutY="112.0" onAction="#genererPDF" text="Export PDF" />
-                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0" spacing="5">
                            <children>
-                              <RadioButton text="Prix" onAction="#triParPrix" fx:id="prixRadioButton" />
-                              <RadioButton text="Date" onAction="#triParDate" fx:id="dateRadioButton" />
-                              <RadioButton text="Disponibilité" onAction="#triParDisponibilite" fx:id="disponibiliteRadioButton" />
+                              <RadioButton fx:id="prixRadioButton" onAction="#triParPrix" text="Trier par Prix" />
+                              <RadioButton fx:id="dateRadioButton" onAction="#triParDate" text="Trier par Date" />
+                              <RadioButton fx:id="disponibiliteRadioButton" onAction="#triParDisponibilite" text="Trier par Disponibilité" />
+                              <Button fx:id="statistiqueButton" onAction="#Statistique" text="Statistique" />
+                              <Button fx:id="genererPDFButton" onAction="#genererPDF" text="Générer PDF" />
                            </children>
                         </VBox>
                      </children>
@@ -39,14 +41,15 @@
                            <HBox prefHeight="21.0" prefWidth="922.0" styleClass="hbox-header">
                               <!-- Contenu de l'entête -->
                               <Label style="-fx-padding: 0 0px" text="Type pack" />
-                              <Label style="-fx-padding: 0 80px" text="NomPack" />
-                              <Label style="-fx-padding: 0 30px" text="Description" />
-                              <Label style="-fx-padding: 0 60px" text="Prix" />
-                              <Label style="-fx-padding: 0 50px" text="Date" />
-                              <Label style="-fx-padding: 0 70px" text="Disponibilite" />
-                              <Label style="-fx-padding: 0 70px" text="Image" />
-                              <Label style="-fx-padding: 0 110px" text="action" />
-
+                              <Label style="-fx-padding: 0 50px" text="NomPack" />
+                              <ImageView fx:id="offreIconVert" fitHeight="16" fitWidth="16" />
+                              <ImageView fx:id="offreIconRouge" fitHeight="16" fitWidth="16" />
+                              <Label style="-fx-padding: 0 20px" text="Description" />
+                              <Label style="-fx-padding: 0 40px" text="Prix" />
+                              <Label style="-fx-padding: 0 40px" text="Date" />
+                              <Label style="-fx-padding: 0 50px" text="Disponibilite" />
+                              <Label style="-fx-padding: 0 120px" text="Image" />
+                              <Label style="-fx-padding: 0 120px" text="Action" />
                            </HBox>
                            <!-- Barre de recherche -->
                            <HBox prefHeight="638.0" prefWidth="1316.0" styleClass="hbox-search">

@@ -75,7 +75,7 @@ public class ModifierPackController {
         if (pack != null) {
             pack.setNomPack(NomT.getText());
             pack.setDescriptionPack(DescriptionT.getText());
-            pack.setPrix(Double.parseDouble(PrixT.getText()));
+            pack.setPrix(Float.valueOf(PrixT.getText()));
             pack.setDate(Date.valueOf(DateT.getValue()));
             pack.setDisponible(DisponibleT.isSelected());
 

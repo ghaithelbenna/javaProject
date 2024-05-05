@@ -27,9 +27,11 @@ import tn.esprit.services.ServicePack;
 import tn.esprit.utils.TriCritere;
 
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.List;
 
 public class AfficherPackController implements Initializable {
 
@@ -50,6 +52,8 @@ public class AfficherPackController implements Initializable {
         prixRadioButton.setToggleGroup(toggleGroup);
         dateRadioButton.setToggleGroup(toggleGroup);
         disponibiliteRadioButton.setToggleGroup(toggleGroup);
+        // Appeler la méthode pour ajuster les prix des packs selon la saison
+        ajusterPrixPacksSaison(new Date());
         affichage();
 
     }
@@ -109,6 +113,26 @@ public class AfficherPackController implements Initializable {
     public void ajouterTypePack(ActionEvent actionEvent) throws IOException {
         navigate("/ajoutTypePack.fxml", actionEvent);
     }
+    @FXML
+    void Statistique(ActionEvent event) {
+        try {
+            // Charger le fichier FXML de la page des statistiques
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Statistiques.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Obtenir la scène actuelle à partir de l'événement
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Remplacer la scène actuelle par la nouvelle scène des statistiques
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     @FXML
     void genererPDF(ActionEvent event) {
@@ -116,69 +140,83 @@ public class AfficherPackController implements Initializable {
         ServicePack servicePack = new ServicePack();
         List<Pack> packs = servicePack.afficherListe();
 
-        // Créer un nouveau document PDF
-        PDDocument document = new PDDocument();
+        try (PDDocument document = new PDDocument()) {
+            PDPage page = new PDPage();
+            document.addPage(page);
 
-        // Ajouter une nouvelle page au document
-        PDPage page = new PDPage();
-        document.addPage(page);
+            try (PDPageContentStream contentStream = new PDPageContentStream(document, page)) {
+                // Charger le logo
+                PDImageXObject logo = PDImageXObject.createFromFile("C:\\Users\\user\\javaProject\\worksjhopjdbc-main\\src\\main\\resources\\logo.jpg", document);
 
-        try {
-            // Initialiser le contenu du PDF
-            PDPageContentStream contentStream = new PDPageContentStream(document, page);
+                // Dessiner le logo
+                contentStream.drawImage(logo, 50, 750, logo.getWidth() / 2, logo.getHeight() / 2);
 
-            // Charger le logo depuis un fichier image
-            PDImageXObject logoImage = PDImageXObject.createFromFile("C:\\Users\\user\\IdeaProjects\\2rism\\worksjhopjdbc-main\\src\\main\\resources\\logo.jpg", document);
-
-            // Insérer le logo dans le document
-            float logoX = 50; // Coordonnée X du logo
-            float logoY = 750; // Coordonnée Y du logo
-            float logoWidth = 100; // Largeur du logo
-            float logoHeight = 100; // Hauteur du logo
-            contentStream.drawImage(logoImage, logoX, logoY, logoWidth, logoHeight);
-
-            // Définir la police et la taille du texte du titre de l'application
-            contentStream.setFont(PDType1Font.HELVETICA_BOLD, 20);
-
-            // Écrire le nom de l'application
-            contentStream.beginText();
-            float titleX = 180; // Coordonnée X du titre de l'application
-            float titleY = 780; // Coordonnée Y du titre de l'applicationcontentStream.newLineAtOffset(titleX, titleY);
-            contentStream.showText("Liste des packs");
-            contentStream.endText();
-
-            // Définir la police et la taille du texte du contenu
-            contentStream.setFont(PDType1Font.HELVETICA, 12);
-
-            // Écrire les données des packs dans le document
-            float contentX = 50; // Coordonnée X du contenu
-            float contentY = 700; // Coordonnée Y du contenu
-            float lineHeight = 20; // Hauteur de ligne
-            for (Pack pack : packs) {
+                // Définir le titre
+                String title = "Liste des packs";
+                contentStream.setNonStrokingColor(Color.BLUE);
+                contentStream.setFont(PDType1Font.HELVETICA_BOLD, 20);
+                float titleWidth = PDType1Font.HELVETICA_BOLD.getStringWidth(title) / 1000f * 20;
+                float titleX = (page.getMediaBox().getWidth() - titleWidth) / 2;
+                float titleY = 750;
                 contentStream.beginText();
-                contentStream.newLineAtOffset(contentX, contentY);
-                contentStream.showText("ID: " + pack.getId());
-                contentStream.newLineAtOffset(0, -lineHeight);
-                contentStream.showText("Nom: " + pack.getNomPack());
-                contentStream.newLineAtOffset(0, -lineHeight);
-                contentStream.showText("Description: " + pack.getDescriptionPack());
-                contentStream.newLineAtOffset(0, -lineHeight);
-                contentStream.showText("Prix: " + pack.getPrix());
-                contentStream.newLineAtOffset(0, -lineHeight);
+                contentStream.newLineAtOffset(titleX, titleY);
+                contentStream.showText(title);
                 contentStream.endText();
-                contentY -= 4 * lineHeight;
+
+                // Dessiner l'en-tête du tableau
+                float tableWidth = page.getMediaBox().getWidth() - 100;
+                float tableY = titleY - 50;
+                drawTableHeader(contentStream, tableWidth, tableY);
+
+                // Dessiner les données des packs dans le tableau
+                float tableContentY = tableY - 20;
+                drawTableContent(contentStream, packs, tableWidth, tableContentY);
             }
 
-            // Fermer le contenu du PDF
-            contentStream.close();
-
-            // Sauvegarder le document PDF
-            document.save("C:\\Users\\user\\IdeaProjects\\2rism\\worksjhopjdbc-main\\src\\main\\resources\\packs.pdf");
-            document.close();
+            document.save("C:\\Users\\user\\IdeaProjects\\2rism\\packs.pdf");
+            System.out.println("Le PDF a été généré avec succès.");
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("Erreur lors de la génération du PDF : " + e.getMessage());
         }
     }
+
+    // Dessiner l'en-tête du tableau
+    private static void drawTableHeader(PDPageContentStream contentStream, float tableWidth, float tableY) throws IOException {
+        contentStream.setNonStrokingColor(Color.LIGHT_GRAY);
+        contentStream.fillRect(50, tableY, tableWidth, 20);
+
+        contentStream.setNonStrokingColor(Color.BLACK);
+        contentStream.setFont(PDType1Font.HELVETICA_BOLD, 12);
+        contentStream.beginText();
+        contentStream.newLineAtOffset(80, tableY + 5);
+        contentStream.showText("Type Pack");
+        contentStream.newLineAtOffset(170, 0);
+        contentStream.showText("Nom");
+        contentStream.newLineAtOffset(200, 0);
+        contentStream.showText("Description");
+
+        contentStream.endText();
+    }
+
+    // Dessiner les données des packs dans le tableau
+    private static void drawTableContent(PDPageContentStream contentStream, List<Pack> packs, float tableWidth, float tableContentY) throws IOException {
+        contentStream.setFont(PDType1Font.HELVETICA, 12);
+        float lineHeight = 15;
+        for (Pack pack : packs) {
+            contentStream.beginText();
+            contentStream.newLineAtOffset(80, tableContentY);
+            contentStream.showText(pack.getTypePack().getNomTypePack());
+            contentStream.newLineAtOffset(170, 0);
+            contentStream.showText(pack.getNomPack());
+            contentStream.newLineAtOffset(200, 0);
+            contentStream.showText(pack.getDescriptionPack());
+            contentStream.endText();
+            tableContentY -= lineHeight;
+        }
+    }
+
+
 
 
     @FXML
@@ -279,5 +317,62 @@ public class AfficherPackController implements Initializable {
                 ex.printStackTrace();
             }
         }
+    }
+    public void ajusterPrixPacksSaison(Date dateActuelle) {
+        String saisonActuelle = determinerSaison(dateActuelle);
+
+        // Récupérer tous les packs
+        List<Pack> packs = sp.afficherListe();
+
+        // Parcourir les packs pour ajuster les prix
+        for (Pack pack : packs) {
+            // Vérifiez si le pack est disponible
+            if (pack.isDisponible()) {
+                // Vérifiez si le type de pack appartient à la saison actuelle
+                if (pack.getTypePack().getNomTypePack().equalsIgnoreCase(saisonActuelle)) { // Si c'est le cas, le prix reste le même
+                    continue;
+                } else {
+                    // Sinon, vérifiez si le type de pack appartient à la saison précédente
+                    if (typePackAppartientSaisonPrecedente(pack.getTypePack().getNomTypePack(), saisonActuelle)) {
+                        // Si c'est le cas, appliquez une réduction de 60%
+                        pack.setPrix(pack.getPrix() * 0.4); // 60% de réduction
+                    }
+                }
+            }
+        }
+    }
+
+
+    // Méthode pour déterminer la saison en fonction de la date
+    public String determinerSaison(Date dateActuelle) {
+        int mois = dateActuelle.getMonth() + 1; // Les mois en Java commencent à 0, donc on ajoute 1
+        String saison;
+
+        // Déterminez la saison en fonction du mois
+        if (mois >= 3 && mois <= 5) {
+            saison = "PRINTEMPS";
+        } else if (mois >= 6 && mois <= 8) {
+            saison = "ÉTÉ";
+        } else if (mois >= 9 && mois <= 11) {
+            saison = "AUTOMNE";
+        } else {
+            saison = "HIVER";
+        }
+
+        return saison;
+    }
+
+    // Méthode pour vérifier si le type de pack appartient à la saison précédente
+    public boolean typePackAppartientSaisonPrecedente(String typePack, String saisonActuelle) {
+        if (typePack.equalsIgnoreCase("HIVER") && saisonActuelle.equalsIgnoreCase("PRINTEMPS")) {
+            return true;
+        } else if (typePack.equalsIgnoreCase("PRINTEMPS") && saisonActuelle.equalsIgnoreCase("ÉTÉ")) {
+            return true;
+        } else if (typePack.equalsIgnoreCase("ÉTÉ") && saisonActuelle.equalsIgnoreCase("AUTOMNE")) {
+            return true;
+        } else if (typePack.equalsIgnoreCase("AUTOMNE") && saisonActuelle.equalsIgnoreCase("HIVER")) {
+            return true;
+        }
+        return false;
     }
 }

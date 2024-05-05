@@ -84,13 +84,6 @@ public class PackController {
                 return null;
             }
         }));
-
-        // Validator pour le champ PrixT (positif)
-        PrixT.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.matches("\\d*")) {
-                PrixT.setText(newValue.replaceAll("[^\\d]", ""));
-            }
-        });
     }
     @FXML
     void ajouter(ActionEvent event) {
@@ -118,13 +111,16 @@ public class PackController {
             return; // Arrêter la méthode si le type de pack sélectionné n'existe pas
         }
 
+        // Convertir le prix en float
+        float prixFloat = (float) Double.parseDouble(PrixT.getText());
+
         // Ajouter le pack en utilisant les données saisies dans les champs, l'image sélectionnée et le type de pack
         Pack pack = new Pack(
                 selectedTypePack.getId_typepack(),
                 selectedTypePack,
                 NomT.getText(),
                 DescriptionT.getText(),
-                Double.parseDouble(PrixT.getText()),
+                prixFloat,
                 sqlDate,
                 image,
                 DisponibleT.isSelected()

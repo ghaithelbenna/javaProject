@@ -29,3 +29,6 @@
 .button:pressed {
     -fx-background-color: #3c9039; /* Couleur de fond lors du clic */
 }
+.hbox-header .offre-icon {
+    -fx-padding: 0 10px;
+}

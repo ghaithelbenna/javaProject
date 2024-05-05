@@ -1,19 +1,29 @@
 package tn.esprit.services;
 
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import tn.esprit.interfaces.IService;
 import tn.esprit.models.Pack;
 import tn.esprit.models.typePack;
 import tn.esprit.utils.MyDataBase;
 
-import java.sql.*;
-import java.text.SimpleDateFormat;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.Date; // Importation de java.sql.Date
+import java.time.Instant;
+import java.time.LocalDate; // Importation de java.time.LocalDate
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 public class ServicePack implements IService<Pack> {
     private Connection cnx;
-
-
 
     public ServicePack() {
         cnx = MyDataBase.getInstance().getCnx();
@@ -25,7 +35,7 @@ public class ServicePack implements IService<Pack> {
             stm.setInt(1, pack.getTypePack().getId_typepack());
             stm.setString(2, pack.getNomPack());
             stm.setString(3, pack.getDescriptionPack());
-            stm.setDouble(4, pack.getPrix());
+            stm.setDouble(4, (float)pack.getPrix());
             stm.setDate(5, new java.sql.Date(pack.getDate().getTime()));
             stm.setString(6, pack.getImage());
             stm.setBoolean(7, pack.isDisponible());
@@ -97,7 +107,7 @@ public class ServicePack implements IService<Pack> {
             stm.setString(2, pack.getNomPack());
             stm.setString(3, pack.getDescriptionPack());
             stm.setDouble(4, pack.getPrix());
-            stm.setDate(5, new Date(pack.getDate().getTime()));
+            stm.setDate(5, (java.sql.Date) new Date(pack.getDate().getTime()));
             stm.setString(6, pack.getImage());
             stm.setBoolean(7, pack.isDisponible());
             stm.setInt(8, pack.getId());
@@ -131,8 +141,37 @@ public class ServicePack implements IService<Pack> {
         }
     }
 
+    // Méthode pour mettre à jour les prix des packs et afficher les icônes en fonction de la date
+    public Map<Integer, ImageView> mettreAJourPrixEtIcônes(List<Pack> packs) {
+        LocalDate dateActuelle = LocalDate.now(); // Date actuelle
+        Map<Integer, ImageView> iconesMap = new HashMap<>(); // Map pour stocker les icônes
+        for (Pack pack : packs) {
+            // Convertir la date du pack en LocalDate
+            Date datePack = (Date) pack.getDate();
+            LocalDate localDatePack = Instant.ofEpochMilli(datePack.getTime())
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
 
+            ImageView icon;
 
+            if (localDatePack.isAfter(dateActuelle) || localDatePack.isEqual(dateActuelle)) {
+                // Afficher l'icône verte si la date du pack est supérieure ou égale à la date actuelle
+                icon = new ImageView(new Image(getClass().getResourceAsStream("/icons/vert_icon.png")));
+            } else {
+                // Afficher l'icône rouge si la date du pack est inférieure à la date actuelle
+                icon = new ImageView(new Image(getClass().getResourceAsStream("/icons/rouge_icon.png")));
+                // Réduire le prix du pack de 30%
+                double nouveauPrix = pack.getPrix() * 0.7; // Réduction de 30%
+                pack.setPrix(nouveauPrix);
+            }
+
+            // Stocker l'icône dans la map avec l'identifiant du pack comme clé
+            iconesMap.put(pack.getId(), icon);
+        }
+
+        // Retourner la map contenant les icônes correspondant à chaque pack
+        return iconesMap;
+    }
 
 
 }
