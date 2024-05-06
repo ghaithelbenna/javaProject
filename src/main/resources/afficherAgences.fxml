@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane onMouseClicked="#afficherAgences" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.afficherAgencesController">
+<AnchorPane onMouseClicked="#afficherAgences" prefHeight="491.0" prefWidth="889.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.afficherAgencesController">
    <children>
-      <Button fx:id="ajoutAgenceBTN" layoutX="164.0" layoutY="285.0" mnemonicParsing="false" onAction="#ajoutAgenceBTN" prefHeight="31.0" prefWidth="218.0" text="Ajouter nouvelle agence" />
-      <ListView fx:id="listView" layoutX="28.0" layoutY="48.0" prefHeight="200.0" prefWidth="555.0" />
+      <Button fx:id="ajoutAgenceBTN" layoutX="470.0" layoutY="393.0" mnemonicParsing="false" onAction="#ajoutAgenceBTN" prefHeight="31.0" prefWidth="218.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Ajouter nouvelle agence" />
+      <ListView fx:id="listView" layoutX="266.0" layoutY="14.0" prefHeight="361.0" prefWidth="606.0" stylesheets="@style2.css" />
+      <AnchorPane layoutX="-4.0" layoutY="-2.0" prefHeight="498.0" prefWidth="218.0" styleClass="sidebar" stylesheets="@style%20(2).css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="9.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo2rism.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="53.0" layoutY="134.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="132.0" styleClass="BTN-SIDEBAR" stylesheets="@style%20(2).css" text="Voitures" />
+            <Button layoutX="57.0" layoutY="249.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="121.0" styleClass="BTN-SIDEBAR" stylesheets="@style%20(2).css" text="Agences" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

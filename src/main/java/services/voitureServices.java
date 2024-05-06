@@ -40,15 +40,41 @@ public class voitureServices implements Iservices<voiture> {
     }
 
 
+    public Integer getIdAgenceByNom(String nomAgence) {
+        Integer idAgence = null;
+
+        try {
+            String query = "SELECT id_agence FROM locationvoitures WHERE nom_agence = ?";
+            PreparedStatement pst = cnx.prepareStatement(query);
+            pst.setString(1, nomAgence);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                idAgence = rs.getInt("id_agence");
+                if (rs.wasNull()) {
+                    idAgence = null; // Si la valeur est NULL dans la base de données, on la considère comme null en Java
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return idAgence;
+    }
+
+
     @Override
     public void ajouterVoiture(voiture voiture) throws SQLException {
-        PreparedStatement pst = cnx.prepareStatement("INSERT INTO vehicule (`immatriculation`, `modele`, `nbr_places`, `couleur`, `prixdelocation`, `imagePath`) VALUES (?, ?, ?, ?, ?, ?)");
+        Integer idAgence = getIdAgenceByNom(voiture.getNom_agence()); // Obtenez l'ID de l'agence en utilisant le nom de l'agence
+
+        PreparedStatement pst = cnx.prepareStatement("INSERT INTO vehicule (`immatriculation`, `modele`, `nbr_places`, `couleur`, `prixdelocation`, `imagePath`, `id_agence`) VALUES (?, ?, ?, ?, ?, ?, ?)");
         pst.setString(1, voiture.getImmatriculation());
         pst.setString(2, voiture.getModele());
         pst.setInt(3, voiture.getNbr_places());
         pst.setString(4, voiture.getCouleur());
         pst.setInt(5, voiture.getPrixdelocation());
         pst.setString(6, voiture.getImagePath());  // Ajoutez le chemin d'accès à l'image dans la requête
+        pst.setObject(7, idAgence); // Utilisez setObject pour gérer la valeur null
 
         pst.executeUpdate();
         System.out.println("Voiture ajoutée avec succès");
@@ -72,6 +98,7 @@ public class voitureServices implements Iservices<voiture> {
         }
     }
 
+
     @Override
     public void delete(voiture voiture) {
         try {
@@ -89,7 +116,7 @@ public class voitureServices implements Iservices<voiture> {
         ObservableList<voiture> voitures = FXCollections.observableArrayList();
 
         try {
-            String req = "SELECT * FROM vehicule";
+            String req = "SELECT v.*, l.nom_agence FROM vehicule v INNER JOIN locationvoitures l ON v.id_agence = l.id_agence";
             Statement st = cnx.createStatement();
             ResultSet rs = st.executeQuery(req);
 
@@ -102,6 +129,7 @@ public class voitureServices implements Iservices<voiture> {
                 voiture.setCouleur(rs.getString("couleur"));
                 voiture.setPrixdelocation(rs.getInt("prixdelocation"));
                 voiture.setImagePath(rs.getString("imagePath"));
+                voiture.setNom_agence(rs.getString("nom_agence")); // Ajout du nom de l'agence
                 voitures.add(voiture);
             }
 
@@ -110,6 +138,29 @@ public class voitureServices implements Iservices<voiture> {
         }
 
         return voitures;
+    }
+
+
+
+    public boolean immatriculationExists(String immatriculation) throws SQLException {
+        // Effectuez la requête appropriée pour vérifier si l'immatriculation existe déjà
+        // Retournez true si l'immatriculation existe, sinon retournez false
+        // Par exemple, vous pouvez utiliser une requête SQL SELECT pour rechercher l'immatriculation dans la table des voitures
+        // Assurez-vous d'utiliser des paramètres de requête ou des requêtes préparées pour éviter les injections SQL
+        // Voici un exemple de code :
+
+        String query = "SELECT COUNT(*) FROM vehicule WHERE immatriculation = ?";
+        try (PreparedStatement statement = cnx.prepareStatement(query)) {
+            statement.setString(1, immatriculation);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        }
+
+        return false;
     }
 
     @Override

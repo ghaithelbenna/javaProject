@@ -50,20 +50,41 @@ public class ajouterAgencesController {
             alert.showAndWait();
             return;
         }
+
         try {
-            as.ajouterAgence(new agencedelocation(nom_agence.getText(), adresse_agence.getText(), Integer.parseInt(nbrvoitures_dispo.getText())));
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle("Success");
-            alert.setContentText("Agence ajoutée avec succès !");
+            int nbrVoituresDispo = Integer.parseInt(nbrvoitures_dispo.getText());
+
+            // Vérifier si le nombre de voitures est entier
+            if (nbrVoituresDispo < 0) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Erreur");
+                alert.setContentText("Le nombre de voitures doit être un entier positif !");
+                alert.showAndWait();
+                return;
+            }
+
+            // Ajouter l'agence si la validation réussit
+            as.ajouterAgence(new agencedelocation(nom_agence.getText(), adresse_agence.getText(), nbrVoituresDispo));
+
+            // Afficher une alerte de succès
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle("Succès");
+            successAlert.setContentText("Agence ajoutée avec succès !");
+            successAlert.showAndWait();
+        } catch (NumberFormatException e) {
+            // Gérer les erreurs de conversion de chaîne en entier
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setContentText("Le nombre de voitures doit être un nombre entier !");
             alert.showAndWait();
         } catch (SQLException e) {
+            // Gérer les erreurs de base de données
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
+            alert.setTitle("Erreur");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
     }
-
 
     @FXML
     void ajoutversAfffichage(ActionEvent event) {
@@ -83,6 +104,44 @@ public class ajouterAgencesController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void naviguerVersVoitures(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterVoitures.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter Voitures");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Fermer la fenêtre d'ajout actuelle
+            ((Node) event.getSource()).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void naviguerVersAgences(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterAgences.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = new Stage();
+            stage.setTitle("Ajouter Voitures");
+            stage.setScene(new Scene(root));
+            stage.show();
+
+            // Fermer la fenêtre d'ajout actuelle
+            ((Node) event.getSource()).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
     }
 

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,19 +9,48 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ajouterAgencesController">
+<AnchorPane prefHeight="595.0" prefWidth="915.0" stylesheets="@style%20(2).css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ajouterAgencesController">
    <children>
-      <VBox layoutX="62.0" layoutY="66.0" prefHeight="200.0" prefWidth="449.0">
+      <VBox layoutX="255.0" layoutY="50.0" prefHeight="200.0" prefWidth="449.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom agence" />
-            <TextField fx:id="nom_agence" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse agence" />
-            <TextField fx:id="adresse_agence" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="nombre de voitures disponibles" />
-            <TextField fx:id="nbrvoitures_dispo" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom agence :" wrappingWidth="168.609375">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></Text>
+            <TextField fx:id="nom_agence" prefHeight="31.0" prefWidth="469.0" promptText="Donner le nom de l'agence">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse agence :" wrappingWidth="135.82080078125">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></Text>
+            <TextField fx:id="adresse_agence" promptText="Donner l'adresse de l'agence">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="nombre de voitures disponibles : " wrappingWidth="247.9013671875">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></Text>
+            <TextField fx:id="nbrvoitures_dispo" promptText="Donner le nombre des voitures disponibles">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin></TextField>
          </children>
       </VBox>
-      <Button fx:id="enregistrer" layoutX="112.0" layoutY="273.0" mnemonicParsing="false" onAction="#ajouterAgence" text="Enregistrer" />
-      <Button fx:id="ajoutversAffichage" layoutX="300.0" layoutY="273.0" mnemonicParsing="false" onAction="#ajoutversAfffichage" text="Affichage des agences" />
+      <Button fx:id="enregistrer" layoutX="276.0" layoutY="380.0" mnemonicParsing="false" onAction="#ajouterAgence" prefHeight="41.0" prefWidth="182.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Enregistrer" />
+      <Button fx:id="ajoutversAffichage" layoutX="530.0" layoutY="380.0" mnemonicParsing="false" onAction="#ajoutversAfffichage" styleClass="labbtn" stylesheets="@style%20(2).css" text="Affichage des agences" />
+      <AnchorPane layoutX="-2.0" layoutY="1.0" prefHeight="595.0" prefWidth="209.0" styleClass="sidebar" stylesheets="@style%20(2).css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="5.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo2rism.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="naviguerVersVoitures" layoutX="52.0" layoutY="157.0" mnemonicParsing="false" onAction="#naviguerVersVoitures" prefHeight="43.0" prefWidth="127.0" styleClass="BTN-SIDEBAR" stylesheets="@style%20(2).css" text="voitures" />
+            <Button layoutX="50.0" layoutY="267.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="127.0" styleClass="BTN-SIDEBAR" stylesheets="@style%20(2).css" text="Agences" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

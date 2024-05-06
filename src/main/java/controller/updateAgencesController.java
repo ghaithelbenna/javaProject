@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -49,6 +50,10 @@ public class updateAgencesController {
 
     @FXML
     void modifierAgence(ActionEvent event) {
+        if (!validateInput()) {
+            return;
+        }
+
         // Récupérer les nouvelles valeurs des champs de modification
         String nouveauNom = nom_agence.getText();
         String nouvelleAdresse = adresse_agence.getText();
@@ -63,7 +68,8 @@ public class updateAgencesController {
         as.updateAgence(agencedelocation);
 
         // Fermer la fenêtre de modification
-
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
 
         // Recharger les agences dans la fenêtre d'affichage
         afficherAgencesController.afficherAgences();
@@ -94,7 +100,6 @@ public class updateAgencesController {
 
     @FXML
     void versAffichage(ActionEvent event) {
-
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherAgences.fxml"));
             Parent root = loader.load();
@@ -110,5 +115,35 @@ public class updateAgencesController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean validateInput() {
+        if (nom_agence.getText().isEmpty() || adresse_agence.getText().isEmpty() || nbrvoitures_dispo.getText().isEmpty()) {
+            showErrorAlert("Veuillez remplir tous les champs !");
+            return false;
+        }
+
+        try {
+            int nbrVoituresDispo = Integer.parseInt(nbrvoitures_dispo.getText());
+            // Vérifier si le nombre de voitures est un entier positif
+            if (nbrVoituresDispo < 0) {
+                showErrorAlert("Le nombre de voitures doit être un entier positif !");
+                return false;
+            }
+        } catch (NumberFormatException e) {
+            showErrorAlert("Le nombre de voitures doit être un nombre entier !");
+            return false;
+        }
+
+        // Autres validations si nécessaire
+
+        return true;
+    }
+
+    private void showErrorAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

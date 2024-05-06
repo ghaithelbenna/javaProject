@@ -58,7 +58,8 @@ public class afficherVoituresController {
                             "nbr places: " + item.getNbr_places() + "\n" +
                             "Couleur: " + item.getCouleur() + "\n" +
                             "prix de location: " + item.getPrixdelocation() + "\n" +
-                            "imagePath: " + item.getImagePath();
+                            "imagePath: " + item.getImagePath() + "\n" +
+                            "Nom agence: " + item.getNom_agence(); // Ajout du nom de l'agence
                     setText(voitureInfo);
                 }
             }

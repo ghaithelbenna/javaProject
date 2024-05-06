@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.collections.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
@@ -8,22 +9,70 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
 
-<AnchorPane prefHeight="504.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.updateVoituresController">
+<AnchorPane prefHeight="663.0" prefWidth="947.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.updateVoituresController">
    <children>
-      <VBox layoutX="57.0" layoutY="24.0" prefHeight="467.0" prefWidth="457.0">
+      <VBox layoutX="233.0" layoutY="30.0" prefHeight="598.0" prefWidth="457.0">
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Immatriculation :" wrappingWidth="135.6708984375" />
-            <TextField fx:id="immatriculation" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modele :" wrappingWidth="136.6708984375" />
-            <TextField fx:id="modele" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de places :" wrappingWidth="207.6708984375" />
-            <TextField fx:id="nbr_places" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur :" wrappingWidth="174.6708984375" />
-            <TextField fx:id="couleur" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix de location : " wrappingWidth="118.6708984375" />
-            <TextField fx:id="prixdelocation" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image  : " wrappingWidth="91.32958984375" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Immatriculation :" wrappingWidth="135.6708984375">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin></Text>
+            <TextField fx:id="immatriculation" promptText="*** TUNIS ****">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modele :" wrappingWidth="136.6708984375">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></Text>
+            <TextField fx:id="modele">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de places :" wrappingWidth="207.6708984375">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></Text>
+            <ComboBox fx:id="nbr_places" promptText="Sélectionnez le nombre de places">
+               <items>
+                  <FXCollections fx:factory="observableArrayList">
+                     <String fx:value="2" />
+                     <String fx:value="5" />
+                     <String fx:value="7" />
+                  </FXCollections>
+               </items>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur :" wrappingWidth="174.6708984375">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></Text>
+            <TextField fx:id="couleur">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom de l'agence  : " wrappingWidth="131.6708984375">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Text>
+            <ComboBox fx:id="agenceComboBox" prefWidth="150.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix de location : " wrappingWidth="118.6708984375">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></Text>
+            <TextField fx:id="prixdelocation">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image  : " wrappingWidth="91.32958984375">
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin></Text>
             <Button fx:id="downloadButtonUpdateClicked" mnemonicParsing="false" onAction="#downloadButtonUpdateClicked" text="Choisir Image" />
             <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
@@ -32,8 +81,19 @@
             </ImageView>
          </children>
       </VBox>
-      <Button fx:id="modifierVoiture" layoutX="595.0" layoutY="49.0" mnemonicParsing="false" onAction="#modifierVoiture" prefHeight="31.0" prefWidth="83.0" text="Update" />
-      <Button fx:id="versAffichage" layoutX="595.0" layoutY="131.0" mnemonicParsing="false" onAction="#versAffichage" text="Affichage" />
-      <Button fx:id="delete" layoutX="593.0" layoutY="205.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="89.0" text="Delete" />
+      <Button fx:id="modifierVoiture" layoutX="754.0" layoutY="94.0" mnemonicParsing="false" onAction="#modifierVoiture" prefHeight="41.0" prefWidth="126.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Update" />
+      <Button fx:id="versAffichage" layoutX="754.0" layoutY="200.0" mnemonicParsing="false" onAction="#versAffichage" prefHeight="41.0" prefWidth="126.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Affichage" />
+      <Button fx:id="delete" layoutX="754.0" layoutY="297.0" mnemonicParsing="false" onAction="#delete" prefHeight="41.0" prefWidth="126.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Delete" />
+      <AnchorPane prefHeight="663.0" prefWidth="208.0" styleClass="sidebar" stylesheets="@style%20(2).css">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="4.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/logo2rism.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="36.0" layoutY="164.0" mnemonicParsing="false" onAction="#versAffichage" prefHeight="43.0" prefWidth="137.0" styleClass="BTN-SIDEBAR" stylesheets="@style%20(2).css" text="Voitures" />
+            <Button layoutX="39.0" layoutY="271.0" mnemonicParsing="false" onAction="#naviguerVersAgences" prefHeight="43.0" prefWidth="136.0" styleClass="BTN-SIDEBAR" stylesheets="@style%20(2).css" text="Agences" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

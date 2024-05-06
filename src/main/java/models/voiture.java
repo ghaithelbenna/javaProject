@@ -8,8 +8,11 @@ public class voiture {
     private String couleur;
     private int prixdelocation;
     private String imagePath;
+    private String nom_agence;
 
     private int id_agence;
+
+
 
     public voiture() {
 
@@ -47,6 +50,10 @@ public class voiture {
         return id_agence;
     }
 
+    public String getNom_agence() {
+        return nom_agence;
+    }
+
     public void setId_vehicule(int id_vehicule) {
         this.id_vehicule = id_vehicule;
     }
@@ -77,6 +84,10 @@ public class voiture {
 
     public void setId_agence(int id_agence) {
         this.id_agence = id_agence;
+    }
+
+    public void setNom_agence(String nom_agence) {
+        this.nom_agence = nom_agence;
     }
 
     public voiture(int id_vehicule, String immatriculation, String modele, int nbr_places, String couleur , int prixdelocation , String imagePath) {

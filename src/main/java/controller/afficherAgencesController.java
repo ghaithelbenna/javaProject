@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -30,19 +31,29 @@ public class afficherAgencesController {
 
     public void initialize() {
         afficherAgences();
-
     }
 
     public void afficherAgences() {
         ObservableList<agencedelocation> agences = as.getAllAgences();
-
         listView.setItems(agences);
 
+        listView.setCellFactory(param -> new ListCell<agencedelocation>() {
+            @Override
+            protected void updateItem(agencedelocation item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                } else {
+                    String agenceInfo = "Nom: " + item.getNom_agence() + "\n" +
+                            "Adresse: " + item.getAdresse_agence() + "\n" +
+                            "Nombre de voitures disponibles: " + item.getNbrvoitures_dispo();
+                    setText(agenceInfo);
+                }
+            }
+        });
 
-
-        // Ajouter un gestionnaire d'événements pour écouter le clic sur un élément de la liste
         listView.setOnMouseClicked((MouseEvent event) -> {
-            if (event.getClickCount() == 2) { // Double-clic
+            if (event.getClickCount() == 2) {
                 agencedelocation agence = listView.getSelectionModel().getSelectedItem();
                 if (agence != null) {
                     openModifierAgenceWindow(event, agence);
@@ -56,19 +67,17 @@ public class afficherAgencesController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/updateAgences.fxml"));
             Parent root = loader.load();
 
-            // Obtenir la référence du contrôleur de la fenêtre de modification
             updateAgencesController controller = loader.getController();
             controller.setAgencedelocation(agence);
-            controller.setAfficherAgencesController(this); // Passer la référence de la fenêtre d'affichage
+            controller.setAfficherAgencesController(this);
 
             Stage stage = new Stage();
             stage.setTitle("Modifier Agence");
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Fermer la fenêtre d'affichage actuelle
-            Stage currentStage = (Stage) listView.getScene().getWindow();
-            currentStage.close();
+            //Stage currentStage = (Stage) listView.getScene().getWindow();
+            //currentStage.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -85,7 +94,6 @@ public class afficherAgencesController {
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Fermer la fenêtre d'affichage actuelle
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
         } catch (IOException e) {
