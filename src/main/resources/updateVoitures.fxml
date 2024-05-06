@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="504.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.updateVoituresController">
+   <children>
+      <VBox layoutX="57.0" layoutY="24.0" prefHeight="467.0" prefWidth="457.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Immatriculation :" wrappingWidth="135.6708984375" />
+            <TextField fx:id="immatriculation" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modele :" wrappingWidth="136.6708984375" />
+            <TextField fx:id="modele" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de places :" wrappingWidth="207.6708984375" />
+            <TextField fx:id="nbr_places" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur :" wrappingWidth="174.6708984375" />
+            <TextField fx:id="couleur" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix de location : " wrappingWidth="118.6708984375" />
+            <TextField fx:id="prixdelocation" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image  : " wrappingWidth="91.32958984375" />
+            <Button fx:id="downloadButtonUpdateClicked" mnemonicParsing="false" onAction="#downloadButtonUpdateClicked" text="Choisir Image" />
+            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <Button fx:id="modifierVoiture" layoutX="595.0" layoutY="49.0" mnemonicParsing="false" onAction="#modifierVoiture" prefHeight="31.0" prefWidth="83.0" text="Update" />
+      <Button fx:id="versAffichage" layoutX="595.0" layoutY="131.0" mnemonicParsing="false" onAction="#versAffichage" text="Affichage" />
+      <Button fx:id="delete" layoutX="593.0" layoutY="205.0" mnemonicParsing="false" onAction="#delete" prefHeight="31.0" prefWidth="89.0" text="Delete" />
+   </children>
+</AnchorPane>

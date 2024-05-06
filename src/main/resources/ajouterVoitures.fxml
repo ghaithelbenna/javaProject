@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="576.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ajouterVoituresController">
+   <children>
+      <VBox layoutX="136.0" layoutY="57.0" prefHeight="478.0" prefWidth="510.0">
+         <children>
+            <ComboBox fx:id="agenceComboBox" prefWidth="150.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Immatriculation :" wrappingWidth="119.6708984375" />
+            <TextField fx:id="immatriculation" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Modele : " wrappingWidth="155.6708984375" />
+            <TextField fx:id="modele" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de places : " wrappingWidth="219.6708984375" />
+            <TextField fx:id="nbr_places" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Couleur : " wrappingWidth="156.6708984375" />
+            <TextField fx:id="couleur" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prix de location :" wrappingWidth="124.6708984375" />
+            <TextField fx:id="prixdelocation" />
+            <Button fx:id="downloadButtonClicked" mnemonicParsing="false" onAction="#downloadButtonClicked" text="Choisir Image" />
+            <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <Text layoutX="316.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ajouter une voiture" textAlignment="CENTER" wrappingWidth="280.6708984375" />
+      <Button fx:id="save" layoutX="718.0" layoutY="75.0" mnemonicParsing="false" onAction="#ajouterVoiture" prefHeight="31.0" prefWidth="147.0" text="Enregistrer" textAlignment="RIGHT">
+         <opaqueInsets>
+            <Insets top="10.0" />
+         </opaqueInsets>
+      </Button>
+      <Button fx:id="naviguerVersAffichage" layoutX="718.0" layoutY="130.0" mnemonicParsing="false" onAction="#naviguerVersAffichage" prefHeight="31.0" prefWidth="147.0" text="Liste Des Voitures" />
+   </children>
+</AnchorPane>

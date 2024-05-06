@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ajouterAgencesController">
+   <children>
+      <VBox layoutX="62.0" layoutY="66.0" prefHeight="200.0" prefWidth="449.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom agence" />
+            <TextField fx:id="nom_agence" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse agence" />
+            <TextField fx:id="adresse_agence" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="nombre de voitures disponibles" />
+            <TextField fx:id="nbrvoitures_dispo" />
+         </children>
+      </VBox>
+      <Button fx:id="enregistrer" layoutX="112.0" layoutY="273.0" mnemonicParsing="false" onAction="#ajouterAgence" text="Enregistrer" />
+      <Button fx:id="ajoutversAffichage" layoutX="300.0" layoutY="273.0" mnemonicParsing="false" onAction="#ajoutversAfffichage" text="Affichage des agences" />
+   </children>
+</AnchorPane>

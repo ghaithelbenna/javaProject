@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="534.0" prefWidth="865.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.afficherVoituresController">
+   <children>
+      <Button fx:id="versAjout" layoutX="257.0" layoutY="397.0" mnemonicParsing="false" onAction="#versAjout" prefHeight="31.0" prefWidth="352.0" text="Ajouter Une Nouvelle Voiture" />
+      <ListView fx:id="listView" layoutX="125.0" layoutY="14.0" prefHeight="373.0" prefWidth="601.0" />
+   </children>
+</AnchorPane>

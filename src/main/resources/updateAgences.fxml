@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.updateAgencesController">
+   <children>
+      <VBox layoutX="49.0" layoutY="66.0" prefHeight="200.0" prefWidth="475.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom d'agence" wrappingWidth="157.6708984375" />
+            <TextField fx:id="nom_agence" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse d'agence" wrappingWidth="201.6708984375" />
+            <TextField fx:id="adresse_agence" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre de voitures disponibles" wrappingWidth="213.6708984375" />
+            <TextField fx:id="nbrvoitures_dispo" />
+         </children>
+      </VBox>
+      <Button fx:id="modifierAgence" layoutX="88.0" layoutY="266.0" mnemonicParsing="false" onAction="#modifierAgence" text="Update" />
+      <Button fx:id="versAffichage" layoutX="222.0" layoutY="266.0" mnemonicParsing="false" onAction="#versAffichage" text="Affichage" />
+      <Button fx:id="deleteAgence" layoutX="391.0" layoutY="266.0" mnemonicParsing="false" onAction="#deleteAgence" text="Delete" />
+   </children>
+</AnchorPane>
