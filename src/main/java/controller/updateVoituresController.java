@@ -95,7 +95,9 @@ public class updateVoituresController {
         nbr_places.setValue(voiture.getNbr_places());
         couleur.setText(voiture.getCouleur());
         prixdelocation.setText(String.valueOf(voiture.getPrixdelocation()));
-        setImage(new Image(new File(voiture.getImagePath()).toURI().toString()));
+        // Afficher l'image
+        Image image = new Image(new File(voiture.getImagePath()).toURI().toString());
+        setImage(image);
 
         // Sélectionner le nom de l'agence dans la ComboBox
         agenceComboBox.setValue(voiture.getNom_agence());

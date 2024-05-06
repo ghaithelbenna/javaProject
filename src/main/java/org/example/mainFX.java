@@ -2,6 +2,7 @@ package org.example;
 
 import controller.ajouterVoituresController;
 import controller.ajouterAgencesController;
+import controller.affichageFrontController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,11 +18,13 @@ public class mainFX extends Application {
         // Charger le fichier FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterVoitures.fxml"));
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterAgences.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("/afficherFront.fxml"));
         Parent root = loader.load();
 
         // Obtenir une référence au contrôleur associé
         ajouterVoituresController ajouterController = loader.getController();
         //ajouterAgencesController ajouterController = loader.getController();
+        //affichageFrontController ajouterController = loader.getController();
 
         // Transmettre la référence à la Stage au contrôleur
         ajouterController.setPrimaryStage(primaryStage);
