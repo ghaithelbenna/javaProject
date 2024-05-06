@@ -12,7 +12,7 @@
 
 /* Navigation Bar */
 .nav-bar {
-    -fx-background-color: #333; /* Dark gray background */
+    -fx-background-color: #e5dada; /* Dark gray background */
 }
 
 .nav-button {
@@ -138,3 +138,50 @@
     -fx-font-family: "Roboto";
     -fx-font-size: 16px;
 }
+
+.car-card {
+
+    opacity: 20;
+    transition: opacity 0.3s;
+}
+
+.car-card.show {
+
+    opacity: 20;
+}
+
+.navbar {
+
+    background-color: #d5d5d5;
+    padding: 10px;
+}
+.car-image-container {
+
+    -fx-fit-width: 200;
+    -fx-fit-height: 200;
+}
+
+.sidebarF {
+    -fx-background-color: #e5dada; /* Couleur de fond de la barre latérale */
+    -fx-padding: 20px; /* Espacement interne de la barre latérale */
+}
+
+
+/* Style pour le bouton Réserver */
+.reserve-button {
+    -fx-background-color: #4CAF50; /* Vert */
+    -fx-text-fill: white;
+}
+
+
+
+
+.labbtn-validate {
+    -fx-text-fill: #FEFFFD; /* White text */
+    -fx-background-color: #4CAF50; /* Blue background */
+    -fx-background-radius: 50px;
+    -fx-font-family: "Roboto";
+    -fx-font-size: 16px;
+}
+
+

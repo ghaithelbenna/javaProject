@@ -7,7 +7,7 @@
 
 <AnchorPane prefHeight="534.0" prefWidth="1056.0" styleClass="list-view" stylesheets="@style2.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.afficherVoituresController">
    <children>
-      <Button fx:id="versAjout" layoutX="467.0" layoutY="396.0" mnemonicParsing="false" onAction="#versAjout" prefHeight="31.0" prefWidth="352.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Ajouter Une Nouvelle Voiture" />
+      <Button fx:id="versAjout" layoutX="271.0" layoutY="395.0" mnemonicParsing="false" onAction="#versAjout" prefHeight="41.0" prefWidth="235.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Ajouter Une Nouvelle Voiture" />
       <ListView fx:id="listView" layoutX="271.0" layoutY="14.0" prefHeight="373.0" prefWidth="743.0" stylesheets="@style2.css" />
       <AnchorPane layoutX="-2.0" prefHeight="535.0" prefWidth="208.0" styleClass="sidebar" stylesheets="@style%20(2).css">
          <children>
@@ -20,5 +20,7 @@
             <Button layoutX="49.0" layoutY="252.0" mnemonicParsing="false" onAction="#versAjout" prefHeight="43.0" prefWidth="123.0" styleClass="BTN-SIDEBAR" stylesheets="@style%20(2).css" text="Agences" />
          </children>
       </AnchorPane>
+      <Button fx:id="pdfButton" layoutX="535.0" layoutY="395.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="216.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Exporter PDF" />
+      <Button fx:id="exportToExcel" layoutX="786.0" layoutY="395.0" mnemonicParsing="false" onAction="#exportToExcel" prefHeight="41.0" prefWidth="216.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Exporter EXCEL" />
    </children>
 </AnchorPane>

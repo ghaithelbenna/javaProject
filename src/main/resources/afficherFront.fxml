@@ -1,17 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.affichageFrontController">
-   <children>
-   
-       <FlowPane fx:id="carContainer" onDragEntered="#initialize" prefHeight="696.0" prefWidth="1039.0">
+<AnchorPane prefHeight="131.0" prefWidth="976.0" stylesheets="@style%20(2).css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.affichageFrontController">
+    <children>
+        <HBox prefHeight="717.0" prefWidth="1082.0">
+            <children>
+                <!-- Sidebar -->
+                <VBox prefWidth="250.0" styleClass="sidebarF" stylesheets="@style%20(2).css">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="117.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/logo2rism.png" />
+                           </image>
+                        </ImageView>
+                     </children></HBox>
+                    </children>
+                </VBox>
 
-    </FlowPane>
-   </children>
-
+                <!-- Contenu principal de la fenêtre -->
+                <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true">
+                    <content>
+                        <FlowPane fx:id="carContainer" alignment="CENTER" hgap="100.0" onDragEntered="#initialize" prefHeight="715.0" prefWidth="835.0" styleClass="car-card" vgap="50.0">
+                            <children>
+                                <ImageView styleClass="car-image" />
+                            </children>
+                        </FlowPane>
+                    </content>
+                </ScrollPane>
+            </children>
+        </HBox>
+    </children>
 </AnchorPane>

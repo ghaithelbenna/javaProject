@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import models.agencedelocation;
+import models.voiture;
 import services.agenceServices;
 
 import java.io.IOException;
@@ -77,6 +78,17 @@ public class updateAgencesController {
 
     @FXML
     void deleteAgence(ActionEvent event) {
+        int idAgence = agencedelocation.getId_agence();
+
+        // Vérifier si l'ID de l'agence est 1, 2 ou 10
+        if (idAgence == 1 || idAgence == 2 || idAgence == 10) {
+            // Afficher un message d'erreur interdisant la suppression de l'agence
+            showErrorAlert("Suppression interdite pour cette agence !");
+            return;
+        }
+
+
+
         // Appeler le service pour supprimer l'agence
         as.deleteAgence(agencedelocation);
 

@@ -8,9 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.voiture;
@@ -24,6 +26,10 @@ public class affichageFrontController {
 
     @FXML
     private FlowPane carContainer;
+    @FXML
+    private ScrollPane scrollPane;
+    @FXML
+    private Button reserverButton;
 
     private Stage primaryStage;
 
@@ -32,6 +38,9 @@ public class affichageFrontController {
     }
 
     public void initialize() {
+
+        scrollPane.setFitToWidth(true);
+        scrollPane.setFitToHeight(true);
         carContainer.setHgap(20);
         afficherVoitures();
     }
@@ -49,8 +58,11 @@ public class affichageFrontController {
         carCard.getStyleClass().add("car-card");
         carCard.setSpacing(10);
 
+        StackPane imageContainer = new StackPane();
+        imageContainer.getStyleClass().add("car-image-container");
         ImageView carImage = new ImageView();
         carImage.setFitWidth(200);
+        carImage.setFitHeight(200);
         carImage.setPreserveRatio(true);
 
         // Chargement de l'image à partir du chemin d'accès
@@ -65,17 +77,52 @@ public class affichageFrontController {
             carImage.setImage(defaultImage);
         }
 
+        imageContainer.getChildren().add(carImage);
+
         Label immatriculationLabel = new Label("Immatriculation: " + voiture.getImmatriculation());
         Label modeleLabel = new Label("Modèle: " + voiture.getModele());
         Label placesLabel = new Label("Nombre de places: " + voiture.getNbr_places());
+        Label couleurLabel = new Label("Couleur: " + voiture.getCouleur());
+        Label prixLabel = new Label("Prix: " + voiture.getPrixdelocation());
 
         // Appliquer des styles CSS aux labels si nécessaire
         immatriculationLabel.getStyleClass().add("car-info-label");
         modeleLabel.getStyleClass().add("car-info-label");
         placesLabel.getStyleClass().add("car-info-label");
+        couleurLabel.getStyleClass().add("car-info-label");
+        prixLabel.getStyleClass().add("car-info-label");
+
+        // Création du bouton Réserver
+        Button reserverButton = new Button("Réserver");
+        reserverButton.getStyleClass().add("reserve-button");
+
+        reserverButton.setOnAction(event -> {
+            Stage primaryStage = (Stage) reserverButton.getScene().getWindow();
+            primaryStage.close();
+            afficherFenetreReservation(voiture);
+        });
+
+
 
         // Ajout des éléments à la carte de voiture
-        carCard.getChildren().addAll(carImage, immatriculationLabel, modeleLabel, placesLabel);
+        carCard.getChildren().addAll(imageContainer, immatriculationLabel, modeleLabel, placesLabel, couleurLabel, prixLabel, reserverButton);
+
         return carCard;
+    }
+
+
+    private void afficherFenetreReservation(voiture voiture) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/ajouterReservations.fxml"));
+            Parent root = loader.load();
+            ajouterReservationController reservationsController = loader.getController();
+            reservationsController.setVehiculeId(voiture.getId_vehicule());
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

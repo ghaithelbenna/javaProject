@@ -9,7 +9,7 @@
 
 <AnchorPane onMouseClicked="#afficherAgences" prefHeight="491.0" prefWidth="889.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.afficherAgencesController">
    <children>
-      <Button fx:id="ajoutAgenceBTN" layoutX="470.0" layoutY="393.0" mnemonicParsing="false" onAction="#ajoutAgenceBTN" prefHeight="31.0" prefWidth="218.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Ajouter nouvelle agence" />
+      <Button fx:id="ajoutAgenceBTN" layoutX="287.0" layoutY="395.0" mnemonicParsing="false" onAction="#ajoutAgenceBTN" prefHeight="41.0" prefWidth="200.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Ajouter nouvelle agence" />
       <ListView fx:id="listView" layoutX="266.0" layoutY="14.0" prefHeight="361.0" prefWidth="606.0" stylesheets="@style2.css" />
       <AnchorPane layoutX="-4.0" layoutY="-2.0" prefHeight="498.0" prefWidth="218.0" styleClass="sidebar" stylesheets="@style%20(2).css">
          <children>
@@ -22,5 +22,7 @@
             <Button layoutX="57.0" layoutY="249.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="121.0" styleClass="BTN-SIDEBAR" stylesheets="@style%20(2).css" text="Agences" />
          </children>
       </AnchorPane>
+      <Button fx:id="pdfButton" layoutX="495.0" layoutY="395.0" mnemonicParsing="false" onAction="#exportToPDF" prefHeight="41.0" prefWidth="139.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Exporter PDF" />
+      <Button fx:id="pdfButton1" layoutX="672.0" layoutY="395.0" mnemonicParsing="false" onAction="#exportToExcel" prefHeight="41.0" prefWidth="139.0" styleClass="labbtn" stylesheets="@style%20(2).css" text="Exporter EXCEL" />
    </children>
 </AnchorPane>
