@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="432.0" prefWidth="369.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AjouterUser">
+   <children>
+      <VBox layoutX="14.0" layoutY="35.0" prefHeight="311.0" prefWidth="292.0" spacing="10.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+            <TextField fx:id="Unom" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prenom" />
+            <TextField fx:id="Uprenom" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+            <TextField fx:id="Uemail" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe" />
+            <PasswordField fx:id="Upassword" />
+         </children>
+      </VBox>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="22.0" layoutY="4.0" prefHeight="21.0" prefWidth="120.0" text="2RISM Registrer" />
+      <Button fx:id="ajouter" layoutX="44.0" layoutY="359.0" mnemonicParsing="false" onAction="#ajouterUser" text="Enregistrer" />
+      <Button fx:id="LoginB" layoutX="184.0" layoutY="359.0" mnemonicParsing="false" onAction="#LoginClicked" text="Login" />
+   </children>
+</AnchorPane>

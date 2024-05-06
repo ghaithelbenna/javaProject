@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="262.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PassReset">
+    <children>
+        <VBox layoutX="120.0" layoutY="45.0" spacing="10.0">
+            <children>
+                <Label text="Reset Password" />
+                <TextField fx:id="codeField" promptText="Enter Reset Code" />
+                <PasswordField fx:id="newPasswordField" promptText="New Password" />
+                <PasswordField fx:id="confirmPasswordField" promptText="Confirm Password" />
+                <Button fx:id="resetButton" onAction="#resetPassword" text="Reset Password" />
+            </children>
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+        </VBox>
+    </children>
+</AnchorPane>

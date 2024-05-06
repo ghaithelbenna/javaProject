@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="432.0" prefWidth="849.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BackController">
+    <children>
+        <Button fx:id="modifier" layoutX="23.0" layoutY="66.0" mnemonicParsing="false" onAction="#modifierUser" text="Modifier" />
+        <Button fx:id="supprimer" layoutX="112.0" layoutY="67.0" mnemonicParsing="false" onAction="#supprimerUser" text="Supprimer" />
+        <VBox layoutX="14.0" layoutY="107.0" prefHeight="264.0" prefWidth="317.0" spacing="10.0">
+            <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Id existant" />
+              <TextField fx:id="iid" prefHeight="31.0" prefWidth="312.0" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau Nom" />
+                <TextField fx:id="Unom" />
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau Prenom" />
+                <TextField fx:id="Uprenom" />
+            </children>
+        </VBox>
+        <TableView fx:id="table" layoutX="341.0" layoutY="82.0" prefHeight="255.0" prefWidth="494.0">
+            <columns>
+                <TableColumn fx:id="Tid" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="Tnom" prefWidth="75.0" text="Email" />
+                <TableColumn fx:id="Tprenom" prefWidth="75.0" text="Nom" />
+                <TableColumn fx:id="Temail" prefWidth="75.0" text="Prenom" />
+                <TableColumn fx:id="Tpassword" prefWidth="66.0" text="Role" />
+                <TableColumn fx:id="Trole" prefWidth="127.0" text="Mot de passe" />
+            </columns>
+        </TableView>
+        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="348.0" layoutY="4.0" prefHeight="21.0" prefWidth="129.0" text="2RISM Back Page" />
+        <Button fx:id="LoginB" layoutX="713.0" layoutY="362.0" mnemonicParsing="false" onAction="#LoginClicked" text="log out" />
+      <Button fx:id="administration" layoutX="213.0" layoutY="66.0" mnemonicParsing="false" onAction="#adminUser" text="Administration" />
+    </children>
+</AnchorPane>

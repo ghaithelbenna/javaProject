@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import Controllers.LoginController?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+
+<AnchorPane prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.LoginController">
+    <stylesheets>
+        <String fx:value="@styles.css" />
+    </stylesheets>
+    <children>
+        <VBox alignment="CENTER_LEFT" spacing="10" layoutX="77" layoutY="34">
+            <ImageView fitWidth="200" fitHeight="200" preserveRatio="true">
+                <image>
+                    <Image url="@2rism.png"/>
+                </image>
+            </ImageView>
+            <Label text="Login" styleClass="title" />
+            <TextField fx:id="emailField" promptText="Email" />
+            <PasswordField fx:id="passwordField" promptText="Password" />
+            <Button fx:id="loginButton" text="Login" onAction="#loginClicked" styleClass="button" />
+            <Button text="Register" onAction="#registerClicked" styleClass="button" />
+            <Label fx:id="errorLabel" textFill="RED" />
+        </VBox>
+    </children>
+</AnchorPane>
