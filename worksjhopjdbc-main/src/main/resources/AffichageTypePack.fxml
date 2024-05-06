@@ -14,7 +14,7 @@
                 <VBox fx:id="pkItems" prefHeight="395.0" prefWidth="735.0" />
             </content>
         </ScrollPane>
-        <Button layoutX="722.0" layoutY="192.0" onAction="#refreshData" text="Rafraîchir" />
+
         <ToolBar layoutX="14.0" prefWidth="875">
             <!-- Ajoutez vos éléments de barre de navigation ici -->
             <Button onAction="#afficherPack" text="afficher Pack" />

@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import tn.esprit.models.typePack;
@@ -58,15 +59,25 @@ public class ItempkController {
             // Initialisez les données dans le contrôleur
             controller.initData(typePack, affichageTypePackController);
 
-            // Créez une nouvelle scène et définissez-la sur la fenêtre principale
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.show();
+            // Accédez au parent du HBox (itemCC)
+            Scene currentScene = itemD.getScene();
+            Parent parent = currentScene.getRoot();
+
+            // Remplacez le contenu actuel par le contenu de la page de modification
+            ((AnchorPane) parent).getChildren().setAll(root);
+
         } catch (IOException e) {
-            e.printStackTrace();
+            afficherAlerteErreur("Erreur lors du chargement de la page de modification !");
         }
     }
+        private void afficherAlerteErreur(String message) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erreur");
+            alert.setHeaderText(null);
+            alert.setContentText(message);
+            alert.showAndWait();
+        }
+
 
 
 

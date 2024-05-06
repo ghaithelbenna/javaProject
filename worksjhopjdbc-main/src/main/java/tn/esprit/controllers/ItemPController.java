@@ -3,6 +3,7 @@ package tn.esprit.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -95,20 +96,22 @@ public class ItemPController {
             // Initialisez les données dans le contrôleur
             controller.initData(pack, afficherPackController);
 
-            // Accédez au parent de l'AnchorPane (itemC)
-            Scene currentScene = itemC.getScene();
-            Parent parent = currentScene.getRoot();
+            // Créer une nouvelle scène avec le contenu de la page de modification
+            Scene scene = new Scene(root);
 
-            // Remplacez le contenu actuel par le contenu de la page de modification
-            ((AnchorPane) parent).getChildren().setAll(root);
+            // Obtenir la fenêtre actuelle
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la nouvelle scène sur la fenêtre
+            stage.setScene(scene);
+            stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
             afficherAlerteErreur("Erreur lors du chargement de la page de modification !");
         }
+
     }
-
-
 
     private void afficherAlerteErreur(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

@@ -1,26 +1,38 @@
+// AffichageFrontController.java
 package tn.esprit.controllers;
-import javafx.geometry.Insets;
 
-import javafx.fxml.FXML;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
+import javafx.fxml.FXML;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Pagination;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import tn.esprit.models.Pack;
+import tn.esprit.models.packPersonnaliser;
 import tn.esprit.services.ServicePack;
+import tn.esprit.services.packPersonnaliserService;
 
+import java.awt.*;
+import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.*;
+import java.util.List;
 
 public class AffichageFrontController implements Initializable {
+
     @FXML
     private Label selectedPacksLabel;
     @FXML
@@ -28,6 +40,7 @@ public class AffichageFrontController implements Initializable {
     @FXML
     private Pagination pagination;
     private List<Pack> selectedPacks = new ArrayList<>();
+    PaiementController paiementController = new PaiementController();
 
     private final ServicePack servicePack = new ServicePack();
     private List<Pack> packs;
@@ -73,7 +86,6 @@ public class AffichageFrontController implements Initializable {
             imageView.setFitWidth(cardWidth - 20); // Largeur ajustée
             imageView.setFitHeight(cardHeight - 20); // Hauteur ajustée
             imageView.setPreserveRatio(true);
-
             try {
                 String imagePath = pack.getImage();
                 if (imagePath != null && !imagePath.isEmpty()) {
@@ -122,12 +134,52 @@ public class AffichageFrontController implements Initializable {
         }
     }
 
+    @FXML
+    private void reservePack() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/paiement.fxml"));
+            Parent paiementView = loader.load();
+            PaiementController paiementController = loader.getController();
+            paiementController.setMontant(calculerMontantTotal()); // Assigner le montant total
+
+            // Récupérer la scène actuelle
+            Scene scene = selectedPacksLabel.getScene();
+
+            // Changer la racine de la scène pour afficher la page de paiement
+            scene.setRoot(paiementView);
+        } catch (IOException e) {
+            e.printStackTrace();
+            // Gérer les erreurs de chargement de la vue de paiement...
+        }
+    }
 
 
+    private float calculerMontantTotal() {
+        float montantTotal = 0.0F;
+        for (Pack pack : selectedPacks) {
+            montantTotal += pack.getPrix();
+        }
+        return (float) montantTotal;
+    }
 
-
-
-
+    private void uncheckAllCheckBoxes() {
+        for (Node node : biensContainer.getChildren()) {
+            if (node instanceof StackPane) {
+                StackPane bienCard = (StackPane) node;
+                for (Node innerNode : bienCard.getChildren()) {
+                    if (innerNode instanceof VBox) {
+                        VBox bienBox = (VBox) innerNode;
+                        for (Node boxNode : bienBox.getChildren()) {
+                            if (boxNode instanceof CheckBox) {
+                                CheckBox checkBox = (CheckBox) boxNode;
+                                checkBox.setSelected(false);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     private void configurePagination() {
         int pageCount = (int) Math.ceil((double) packs.size() / ITEMS_PER_PAGE);
@@ -142,4 +194,6 @@ public class AffichageFrontController implements Initializable {
     private void updateSelectedPacksLabel() {
         selectedPacksLabel.setText("Packs sélectionnés : " + selectedPacks.size());
     }
+
+
 }

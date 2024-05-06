@@ -21,14 +21,16 @@ public class ModifierTypePackController {
     private TextField nouveauNomTypePackTextField;
 
     private typePack typePack;
-    private TypePackService TypePackservice;
+
+    private TypePackService typePackService;
     private AffichageTypePackController affichageTypePackController;
+
 
     public void initData(typePack typePack, AffichageTypePackController affichageTypePackController) {
         this.typePack = typePack;
         this.affichageTypePackController = affichageTypePackController;
         nouveauNomTypePackTextField.setText(typePack.getNomTypePack());
-        TypePackservice = new TypePackService();
+        typePackService = new TypePackService();
     }
 
     @FXML
@@ -36,7 +38,7 @@ public class ModifierTypePackController {
         String nouveauNom = nouveauNomTypePackTextField.getText();
         if (!nouveauNom.isEmpty()) {
             typePack.setNomTypePack(nouveauNom);
-            TypePackservice.update(typePack);
+            typePackService.update(typePack);
 
             // Actualiser la liste affichée après modification
             affichageTypePackController.affichage();
@@ -50,5 +52,31 @@ public class ModifierTypePackController {
         }
     }
 
+    @FXML
+    void retourALaListe(ActionEvent event) {
+        try {
+            // Charger le fichier FXML de la vue de la liste des catégories
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AffichageCategorie.fxml"));
+            Parent root = loader.load();
 
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Accéder à la fenêtre principale
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la scène sur la fenêtre principale
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            afficherAlerteErreur("Erreur lors du chargement de la liste des catégories !");
+        }
+    }
+    private void afficherAlerteErreur(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
 }

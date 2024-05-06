@@ -2,24 +2,33 @@ package tn.esprit.models;
 
 import java.time.LocalDateTime;
 public class programme {
-    int id_prog ,id_categorie;
-    String image, description_programme;
+    int id_prog;
+    int id_categorie;
+    String nomCategorie,description_programme; // Nouveau champ pour stocker le nom de la catégorie
+    String image;
     private LocalDateTime duree;
-
     double prix;
     boolean disponible;
-
 
     public programme(int id_prog, int id_categorie, String image, LocalDateTime duree, double prix, String description_programme, boolean disponible) {
         this.id_prog = id_prog;
         this.id_categorie = id_categorie;
         this.image = image;
-        this.description_programme = description_programme;
         this.duree = duree;
         this.prix = prix;
+        this.description_programme = description_programme;
         this.disponible = disponible;
     }
 
+    // Autres méthodes existantes...
+
+    public String getNomCategorie() {
+        return nomCategorie;
+    }
+
+    public void setNomCategorie(String nomCategorie) {
+        this.nomCategorie = nomCategorie;
+    }
 
     public programme() {
     }

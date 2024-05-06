@@ -11,5 +11,5 @@
     <Label layoutX="64.0" layoutY="40.0" text="Modifier le type de pack :" />
     <TextField fx:id="nouveauNomTypePackTextField" layoutX="64.0" layoutY="80.0" promptText="Nouveau nom du type de pack" />
     <Button layoutX="64.0" layoutY="120.0" onAction="#modifierTypePack" text="Modifier" />
-
+    <Button text="Retour à la liste" onAction="#retourALaListe" />
 </AnchorPane>

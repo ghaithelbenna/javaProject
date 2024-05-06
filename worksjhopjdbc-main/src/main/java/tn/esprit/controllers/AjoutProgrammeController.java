@@ -124,4 +124,10 @@ public class AjoutProgrammeController {
     public void ajoutertypePack(ActionEvent actionEvent) throws IOException{
         navigate("/ajoutTypePack.fxml", actionEvent);
     }
+
+    public void afficherCategorie(ActionEvent actionEvent) {
+    }
+
+    public void ajouterCategorie(ActionEvent actionEvent) {
+    }
 }

@@ -2,6 +2,10 @@ package tn.esprit.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -10,6 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import tn.esprit.models.Pack;
 import tn.esprit.services.ServicePack;
 
@@ -93,6 +98,7 @@ public class ModifierPackController {
         }
     }
 
+
     public void initData(Pack pack, AfficherPackController afficherPackController) {
         this.pack = pack;
         this.afficherPackController = afficherPackController;
@@ -123,5 +129,32 @@ public class ModifierPackController {
 
     public void setAfficherPackController(AfficherPackController afficherPackController) {
         this.afficherPackController = afficherPackController;
+    }
+    @FXML
+    void retourALaListe(ActionEvent event) {
+        try {
+            // Charger le fichier FXML de la vue de la liste des catégories
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AffichageCategorie.fxml"));
+            Parent root = loader.load();
+
+            // Créer une nouvelle scène
+            Scene scene = new Scene(root);
+
+            // Accéder à la fenêtre principale
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Définir la scène sur la fenêtre principale
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            afficherAlerteErreur("Erreur lors du chargement de la liste des catégories !");
+        }
+    }
+    private void afficherAlerteErreur(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

@@ -37,22 +37,38 @@ public class ProgrammeService {
         try (PreparedStatement preparedStatement = cnx.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
             while (resultSet.next()) {
-                LocalDateTime duree = resultSet.getTimestamp("duree").toLocalDateTime();
+                int idCategorie = resultSet.getInt("id_categorie");
+                String nomCategorie = getNomCategorie(idCategorie);
                 programme prog = new programme(
                         resultSet.getInt("id_prog"),
-                        resultSet.getInt("id_categorie"),
+                        idCategorie,
                         resultSet.getString("image"),
-                        duree,
+                        resultSet.getObject("duree", LocalDateTime.class),
                         resultSet.getDouble("prix"),
                         resultSet.getString("description_programme"),
                         resultSet.getBoolean("disponible")
                 );
+                prog.setNomCategorie(nomCategorie); // Définition du nom de la catégorie
                 programmes.add(prog);
             }
         } catch (SQLException e) {
             System.err.println("Erreur lors de la récupération des programmes : " + e.getMessage());
         }
         return programmes;
+    }
+    public String getNomCategorie(int idCategorie) {
+        String nomCategorie = null;
+        String query = "SELECT nomcategorie FROM categorie WHERE id_categorie = ?";
+        try (PreparedStatement preparedStatement = cnx.prepareStatement(query)) {
+            preparedStatement.setInt(1, idCategorie);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                nomCategorie = resultSet.getString("nomcategorie");
+            }
+        } catch (SQLException e) {
+            System.err.println("Erreur lors de la récupération du nom de la catégorie : " + e.getMessage());
+        }
+        return nomCategorie;
     }
 
 }
