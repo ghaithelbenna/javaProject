@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: #f0f0f0;" stylesheets="@homeStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.HomeController">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="1200.0">
+         <children>
+            <Pane layoutX="342.0" layoutY="33.0" prefHeight="200.0" prefWidth="474.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="419.0" layoutX="37.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@2rism.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="204.0" layoutY="273.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Pack" prefHeight="207.0" prefWidth="207.0">
+                     <graphic>
+                        <ImageView fitHeight="134.0" fitWidth="147.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/pack.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Label layoutX="87.0" layoutY="165.0" text="Pack" />
+               </children>
+            </Pane>
+            <Pane layoutX="486.0" layoutY="273.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Véhicule" prefHeight="207.0" prefWidth="207.0">
+                     <graphic>
+                        <ImageView fitHeight="120.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/voiture.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Label layoutX="85.0" layoutY="159.0" text="Véhicule" />
+               </children>
+            </Pane>
+            <Pane layoutX="776.0" layoutY="273.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Hebergement" prefHeight="207.0" prefWidth="207.0">
+                     <graphic>
+                        <ImageView fitHeight="160.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/house.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Label layoutX="57.0" layoutY="159.0" text="Hebergement" />
+               </children>
+            </Pane>
+            <Pane layoutX="204.0" layoutY="521.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Blog" prefHeight="207.0" prefWidth="207.0">
+                     <graphic>
+                        <ImageView fitHeight="167.0" fitWidth="172.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/blog.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Label layoutX="85.0" layoutY="159.0" text="Blog" />
+               </children>
+            </Pane>
+            <Pane layoutX="486.0" layoutY="521.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Event" prefHeight="207.0" prefWidth="207.0">
+                     <graphic>
+                        <ImageView fitHeight="128.0" fitWidth="134.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/event.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Label layoutX="85.0" layoutY="159.0" text="Event" />
+               </children>
+            </Pane>
+            <Pane layoutX="776.0" layoutY="521.0" prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Button layoutX="-1.0" layoutY="-2.0" mnemonicParsing="false" onAction="#Utilisateur" prefHeight="207.0" prefWidth="207.0" />
+                  <Label layoutX="64.0" layoutY="155.0" text="Utilisateur" />
+                  <ImageView fitHeight="135.0" fitWidth="128.0" layoutX="36.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/user.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

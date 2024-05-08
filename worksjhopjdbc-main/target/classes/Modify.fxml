@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="pane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifyController">
+   <children>
+      <TextField fx:id="NomEvent" layoutX="450.0" layoutY="123.0" promptText="nom" />
+      <TextField fx:id="TypeEvent" layoutX="450.0" layoutY="203.0" promptText="type" />
+      <TextField fx:id="DureeEvent" layoutX="450.0" layoutY="288.0" promptText="duree" />
+      <DatePicker fx:id="datePick" layoutX="437.0" layoutY="374.0" promptText="date" />
+      <Button layoutX="488.0" layoutY="444.0" mnemonicParsing="false" onAction="#SaveBtn" style="-fx-background-color: purple;" text="SAVE" />
+      <ImageView fitHeight="59.0" fitWidth="150.0" layoutX="434.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo2rism.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

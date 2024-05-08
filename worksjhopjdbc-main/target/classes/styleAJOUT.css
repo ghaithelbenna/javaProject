@@ -1,0 +1,70 @@
+/* Style pour la barre d'outils */
+.tool-bar {
+    -fx-background-color: #333;
+}
+
+/* Style pour les boutons de la barre d'outils */
+.tool-bar .button {
+    -fx-background-color: #ff784f;
+    -fx-text-fill: #4d4e50;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 10px;
+}
+/* Style pour l'AnchorPane principal */
+.anchor-pane {
+    -fx-background-color: #f0f0f0; /* Couleur de fond */
+}
+
+/* Style pour le Pane contenant les champs de saisie */
+#pane {
+    -fx-background-color: #FF7F50; /* Couleur de fond */
+    -fx-background-radius: 10px; /* Rayon des bords */
+    -fx-padding: 20px; /* Espacement intérieur */
+}
+
+/* Style pour le texte "AJOUT PACK" */
+.text-title {
+    -fx-font-size: 24px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-fill: #ffffff; /* Couleur du texte */
+}
+
+/* Style pour les labels */
+.label {
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-text-fill: #ffffff; /* Couleur du texte */
+}
+
+/* Style pour les champs de saisie */
+.text-field {
+    -fx-background-color: #ffffff; /* Couleur de fond */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+/* Style pour les boutons */
+.button {
+    -fx-background-color: #5cb1e8; /* Couleur de fond */
+    -fx-text-fill: #ffffff; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+/* Style pour les checkboxes */
+.check-box {
+    -fx-text-fill: #ffffff; /* Couleur du texte */
+}
+
+/* Style pour les combobox */
+.combo-box {
+    -fx-font-size: 14px; /* Taille de la police */
+}
+
+/* Style pour les images */
+.image-view {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0, 0, 0); /* Ombre portée */
+}
+/* Style pour le texte de titre */
+.text-title {
+    -fx-font-size: 24px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-fill: #ffffff; /* Couleur du texte */
+}

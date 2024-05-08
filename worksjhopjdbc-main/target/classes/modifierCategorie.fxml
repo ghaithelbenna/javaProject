@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierCategorieController">
+
+    <VBox alignment="CENTER" spacing="10">
+        <HBox spacing="10" />
+    </VBox>
+   <Pane layoutX="153.0" layoutY="62.0" prefHeight="677.0" prefWidth="605.0" style="-fx-background-color: #FF7F50;">
+      <children>
+         <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="149.0" layoutX="123.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true" />
+         <ImageView fitHeight="56.0" fitWidth="125.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@logo.jpg" />
+            </image>
+         </ImageView>
+         <Text fx:id="titleText" layoutX="237.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title" text="Modifier Categorie" textAlignment="CENTER" wrappingWidth="189.0000238418579">
+            <font>
+               <Font name="Algerian" size="16.0" />
+            </font>
+         </Text>
+   
+           <!-- Ajoutez d'autres champs si nécessaire -->
+   
+           <Button layoutX="480.0" layoutY="619.0" onAction="#modifierCategorie" text="Modifier" />
+         <TextField fx:id="nomCategorieTextField" layoutX="253.0" layoutY="200.0" promptText="catégorie " />
+         <Label layoutX="84.0" layoutY="205.0" text="Nom de la catégorie :" />
+      </children>
+   </Pane>
+     <Button layoutX="14.0" layoutY="14.0" onAction="#retourALaListe">
+      <graphic>
+         <ImageView fitHeight="20.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/RETOUR.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+</AnchorPane>

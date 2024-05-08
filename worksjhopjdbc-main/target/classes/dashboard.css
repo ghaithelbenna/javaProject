@@ -1,0 +1,66 @@
+.sidebar{
+    -fx-background-color: linear-gradient(to bottom right , #fc692a, #9557e1);
+}
+
+.main-btn1{
+    -fx-background-color: transparent ;}
+
+.main-btn1:hover{
+    -fx-background-color: linear-gradient(to bottom right , #fc692a, #9557e1);}
+
+.pane{
+    -fx-background-color: #f0f0f0; /* Very light gray */
+    -fx-background-radius: 10px; /* Rounded edges */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2); /* Shadow effect */
+   }
+.pane1{
+    -fx-background-color: linear-gradient(to bottom right , #fc692a, #9557e1);
+    -fx-background-radius: 10px; /* Rounded edges */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 2); /* Shadow effect */
+}
+.btn{
+    -fx-background-color: #fc692a;
+}
+.list-view .column-header {
+    -fx-background-color: #9557e1;
+    -fx-font-size: 10px; /* Font size */
+    -fx-font-weight: bold; /* Font weight */
+    -fx-padding: 5px 10px; /* Padding */
+    -fx-border-color: #ccc; /* Border color */
+    -fx-border-width: 0 0 1 0; /* Border width (bottom only) */
+}
+
+.card {
+    -fx-background-color: #f5f5f5;
+    -fx-padding: 10px;
+    -fx-spacing: 5px;
+    -fx-border-radius: 5px;
+    -fx-border-color: #ddd;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow( gaussian , rgba(0,0,0,0.2) , 10,0,0,1 );
+    -fx-background-radius: 5px;
+    -fx-margin: 10px; /* Add margin between cards */
+}
+
+.card:hover {
+    -fx-border-color: #999;
+}
+
+.card-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #333;
+}
+
+/* Style for the notification popup */
+.notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8d7da; /* Red background color */
+    color: #721c24; /* Dark red text color */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+    z-index: 1000; /* Ensure it's above other elements */
+}

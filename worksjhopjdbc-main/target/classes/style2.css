@@ -1,0 +1,19 @@
+/* style.css */
+
+.list-cell {
+    -fx-background-color: #e0e0e0; /* Couleur de fond de chaque cellule */
+    -fx-padding: 10px; /* Espacement interne de chaque cellule */
+    -fx-border-color: #bdbdbd; /* Couleur de la bordure */
+    -fx-border-width: 0 0 2px 0; /* Largeur de la bordure (bas seulement) */
+}
+
+.list-cell:hover {
+    -fx-background-color: #c0c0c0; /* Couleur de fond de la cellule au survol */
+}
+
+.list-view {
+    -fx-background-color: #f5f5f5; /* Couleur de fond de la ListView */
+    -fx-border-color: #cccccc; /* Couleur de la bordure */
+    -fx-border-width: 1px; /* Largeur de la bordure */
+    -fx-border-radius: 5px; /* Rayon de la bordure */
+}

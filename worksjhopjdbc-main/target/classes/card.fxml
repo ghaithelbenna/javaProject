@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="294.0" prefWidth="195.0" styleClass="card" stylesheets="@dashboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.cardController">
+   <children>
+      <VBox layoutX="47.0" layoutY="14.0" prefHeight="228.0" prefWidth="195.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox prefHeight="47.0" prefWidth="195.0">
+               <children>
+                  <Label fx:id="name_label" alignment="CENTER" prefHeight="46.0" prefWidth="99.0" styleClass="btn" stylesheets="@dashboard.css" text="Label" textFill="#f4f0f0" />
+                  <Label fx:id="nbr_etoiles_label" alignment="CENTER" prefHeight="52.0" prefWidth="105.0" styleClass="btn" stylesheets="@dashboard.css" text="Label" textFill="WHITE" />
+               </children>
+            </HBox>
+            <AnchorPane prefHeight="129.0" prefWidth="193.0" styleClass="pane" stylesheets="@dashboard.css">
+               <children>
+                  <ImageView fitHeight="109.0" fitWidth="170.0" layoutX="1.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </AnchorPane>
+            <HBox prefHeight="46.0" prefWidth="195.0">
+               <children>
+                  <Label fx:id="prix_label" alignment="CENTER" prefHeight="54.0" prefWidth="96.0" styleClass="card" stylesheets="@dashboard.css" text="Label" />
+                  <Label fx:id="emplacement_label" alignment="CENTER" prefHeight="46.0" prefWidth="98.0" styleClass="card" stylesheets="@dashboard.css" text="Label" />
+               </children>
+            </HBox>
+            <HBox prefHeight="70.0" prefWidth="195.0" styleClass="pane1" stylesheets="@dashboard.css">
+               <children>
+                  <Label fx:id="description" alignment="CENTER" prefHeight="72.0" prefWidth="194.0" style="-fx-background-color: purple;" stylesheets="@dashboard.css" text="Label" textFill="#faf2f2" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="affichageStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AffichageCategorieController">
+
+    <children>
+      <VBox prefHeight="800.0" prefWidth="1200.0">
+         <children>
+      
+              <!-- Barre d'outils -->
+              <ToolBar prefWidth="875">
+                  <Button minHeight="29.0" mnemonicParsing="false" onAction="#RETOUR" prefHeight="29.0" prefWidth="77.0">
+                      <graphic>
+                          <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                  <Image url="@images/RETOUR.png" />
+                              </image>
+                          </ImageView>
+                      </graphic>
+                  </Button>
+                  <!-- Ajoutez vos éléments de barre de navigation ici -->
+                  <Button onAction="#afficherPack" text="afficher Pack" />
+                  <Button onAction="#affichercategorie" text="afficher categorie" />
+                  <Button onAction="#affichertypePack" text="afficher type Pack" />
+              </ToolBar>
+              <HBox prefHeight="21.0" prefWidth="1052.0" styleClass="hbox-header">
+                  <!-- Contenu de l'en-tête -->
+                  <Label style="-fx-padding: 0 20px;" text="Catégorie" />
+                  <Label style="-fx-padding: 0 150px;" text="Action">
+                  <HBox.margin>
+                     <Insets />
+                  </HBox.margin>
+               </Label>
+               <VBox.margin>
+                  <Insets left="180.0" />
+               </VBox.margin>
+                  <!-- Ajoutez d'autres labels ici avec le style approprié -->
+              </HBox>
+             <HBox prefHeight="734.0" prefWidth="1200.0">
+                 <children>
+                     <Pane prefHeight="734.0" prefWidth="350.0">
+                         <children>
+
+                             <Button fx:id="AJOUT" layoutX="21.0" layoutY="93.0" onAction="#ajouterCategorie" text="ajouter categorie" />
+                            <TextField fx:id="searchField" layoutX="26.0" layoutY="14.0" prefHeight="31.0" prefWidth="137.0" promptText="Search..." />
+                         </children>
+                     </Pane>
+                     <!-- Ajout du champ de recherche -->
+                     <VBox spacing="10" />
+                     <ScrollPane prefHeight="732.0" prefWidth="1200.0">
+                         <content>
+                             <VBox fx:id="pkItemsCC" prefHeight="713.0" prefWidth="676.0" />
+                         </content>
+                     </ScrollPane>
+                 </children>
+             </HBox>
+
+         </children>
+      </VBox>
+    </children>
+
+</AnchorPane>

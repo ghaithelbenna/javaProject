@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="600.0" prefWidth="1200.0" styleClass="pane11" stylesheets="@stylees.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ListGuideController">
+   <Pane layoutX="20.0" layoutY="49.0" prefHeight="536.0" prefWidth="1046.0" styleClass="pane" stylesheets="@styles.css">
+      <children>
+      
+          <!-- Event ListView -->
+          <ListView fx:id="guideListView" layoutX="47.0" layoutY="51.0" prefHeight="392.0" prefWidth="606.0" />
+          <Button layoutX="769.0" layoutY="92.0" onAction="#AddGuide" stylesheets="@styles.css" text="Ajouter" />
+      
+          <Button layoutX="759.0" layoutY="268.0" onAction="#deleteSelectedGuides" stylesheets="@styles.css" text="Supprimer" />
+          <Button layoutX="770.0" layoutY="185.0" onAction="#ModifyGuide" styleClass="buttonmod" stylesheets="@styles.css" text="Modify" />
+         <Text fill="WHITE" layoutX="221.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mannage the Guids here " wrappingWidth="293.1103057861328">
+            <font>
+               <Font name="Consolas" size="23.0" />
+            </font>
+         </Text>
+         <Button layoutX="165.0" layoutY="467.0" mnemonicParsing="false" onAction="#StatBtn" prefHeight="41.0" prefWidth="66.0" style="-fx-background-color: purple;" text="Stat" />
+         <ImageView fitHeight="67.0" fitWidth="152.0" layoutX="832.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@logo2rism.png" />
+            </image>
+         </ImageView>
+         <Button layoutX="769.0" layoutY="380.0" mnemonicParsing="false" onAction="#naviguer" prefHeight="40.0" prefWidth="85.0" text="event" />
+      </children>
+   </Pane>
+   <Text fill="WHITE" layoutX="148.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hello Admin ! " wrappingWidth="367.73670959472656">
+      <font>
+         <Font name="Consolas Bold" size="42.0" />
+      </font>
+   </Text>
+   <Button layoutX="10.0" layoutY="10.0" minHeight="26.0" mnemonicParsing="false" onAction="#RETOUR" prefHeight="26.0" prefWidth="35.0">
+      <graphic>
+         <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/RETOUR.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+
+</AnchorPane>

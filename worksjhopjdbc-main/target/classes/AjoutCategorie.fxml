@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="styleAJOUT.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AjoutCategorieController">
+
+    <Label layoutX="342.0" layoutY="396.0" text="Nom Catégorie" />
+   <Pane layoutX="152.0" layoutY="62.0" prefHeight="677.0" prefWidth="605.0" style="-fx-background-color: #FF7F50;">
+      <children>
+         <ImageView fitHeight="56.0" fitWidth="125.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@logo.jpg" />
+            </image>
+         </ImageView>
+         <Text fx:id="titleText" layoutX="243.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title" text="Ajout Categorie" textAlignment="CENTER" wrappingWidth="189.0000238418579">
+            <font>
+               <Font name="Algerian" size="16.0" />
+            </font>
+         </Text>
+          <TextField fx:id="nomCategorieTextField" layoutX="149.0" layoutY="160.0" />
+      
+          <Button layoutX="275.0" layoutY="222.0" onAction="#ajouterCategorie" text="Ajouter" />
+      </children>
+   </Pane>
+   <Button layoutX="24.0" layoutY="24.0" onAction="#retourALaListe">
+      <graphic>
+         <ImageView fitHeight="20.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/RETOUR.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+</AnchorPane>

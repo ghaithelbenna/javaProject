@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.EventFrontController">
+    <children>
+        <Label layoutX="312.0" layoutY="38.0" prefHeight="42.0" prefWidth="270.0" style="-fx-text-fill: orange; -fx-font-weight: bold; -fx-alignment: center;" text="LISTES DES EVENEMENTS">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <ScrollPane fx:id="scrollPane" layoutX="175.0" layoutY="140.0" prefHeight="517.0" prefWidth="849.0">
+            <content>
+                <GridPane fx:id="gridPane">
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                </GridPane>
+            </content>
+        </ScrollPane>
+      <Button fx:id="chatbotButton" layoutX="182.0" layoutY="691.0" mnemonicParsing="false" onAction="#openChatbot" prefHeight="42.0" prefWidth="86.0" style="-fx-background-color: orange;" text="Chatbot" />
+    </children>
+</AnchorPane>

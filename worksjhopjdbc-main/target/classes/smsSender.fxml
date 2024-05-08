@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.SMSController">
+    <Label text="Enter Phone Number:" />
+    <TextField fx:id="phoneNumberField" />
+
+    <Label text="Enter Message:" />
+    <TextField fx:id="messageField" />
+
+    <Button text="Send SMS" onAction="#sendSMS" />
+</VBox>
