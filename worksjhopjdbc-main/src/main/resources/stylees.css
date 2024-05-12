@@ -1,0 +1,171 @@
+/* styles.css */
+
+.list-view {
+    -fx-background-color: #f2f2f2; /* Grey background */
+    -fx-background-radius: 10; /* Rounded corners */
+}
+
+.list-cell {
+    -fx-background-color: #ffffff; /* White background */
+    -fx-padding: 10px;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #cccccc;
+    -fx-cursor: hand;
+    -fx-text-fill: #000000; /* Black text */
+    -fx-background-radius: 5; /* Rounded corners */
+}
+.list-cell1 {
+    -fx-background-color:transparent; /* White background */
+    -fx-padding: 10px;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #000000;
+    -fx-cursor: hand;
+    -fx-text-fill: #ffffff; /* Black text */
+    -fx-background-radius: 5; /* Rounded corners */
+}
+
+.list-cell:selected {
+    -fx-background-color: #1e8ec0; /* Light blue when selected */
+}
+
+.list-cell:hover {
+    -fx-background-color: #e0e0e0; /* Light grey on hover */
+}
+
+.list-view .scroll-bar {
+    -fx-background-color: #cccccc; /* Scroll bar background color */
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.list-view .scroll-bar:horizontal {
+    -fx-padding: 0 0 17 0; /* Adjust horizontal scrollbar padding */
+}
+
+.list-view .scroll-bar .thumb {
+    -fx-background-color: #999999; /* Scroll thumb color */
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 7; /* Thumb border radius */
+}
+
+.list-view .scroll-bar .thumb:hover {
+    -fx-background-color: #666666; /* Scroll thumb color on hover */
+}
+
+.list-view .scroll-bar .thumb:pressed {
+    -fx-background-color: #333333; /* Scroll thumb color when pressed */
+}
+
+.button {
+    -fx-background-color: #ffb700;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    -fx-background-color: #e5af59;
+}
+
+.button:pressed {
+    -fx-background-color: #e5ce5b;
+}
+
+.button {
+    -fx-background-color: #c74f52;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    -fx-background-color: #9d5d5f;
+}
+
+.button:pressed {
+    -fx-background-color: #d3696c;
+}
+
+.buttonmod {
+    -fx-background-color: #1e8ec0;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+.buttonmod:hover {
+    -fx-background-color: #4197b4;
+}
+
+.buttonmod:pressed {
+    -fx-background-color: #7398c4;
+}
+
+.pane {
+    -fx-background-color: linear-gradient(to bottom right,#c77222 , #9c49de); /* Dark gradient background */
+    -fx-background-radius: 10; /* Rounded corners */
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.8), 10, 0, 0, 5); /* Shadow effect */
+}
+
+.pane11 {
+    -fx-background-color: linear-gradient(to bottom right, #9c49de, #c77222); /* Dark gradient background */
+    -fx-background-radius: 10; /* Rounded corners */
+    -fx-effect: dropshadow(gaussian, rgba(110, 108, 108, 0.8), 10, 0, 0, 5); /* Shadow effect */
+}
+.btn{
+    -fx-background-color: #ffb700;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+
+
+
+
+
+/* styles.css */
+
+/* Style for the anchor pane */
+.pane111 {
+    -fx-background-color: #f0f0f0; /* Set background color */
+    -fx-padding: 10px; /* Add padding */
+}
+
+/* Style for the VBox */
+VBox1111 {
+    -fx-spacing: 10px; /* Add spacing between children */
+}
+
+/* Style for the labels */
+.list-cell111 {
+    -fx-font-size: 14px; /* Set font size */
+    -fx-font-weight: bold; /* Set font weight */
+}
+
+/* Style for the button */
+.button22 {
+    -fx-background-color: #007bff; /* Set button background color */
+    -fx-text-fill: white; /* Set button text color */
+    -fx-padding: 5px 10px; /* Add padding */
+    -fx-font-size: 14px; /* Set font size */
+}
+
+
+

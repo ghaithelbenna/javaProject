@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" styleClass="pane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ListEvenementController">
+
+    <!-- Styles -->
+    <stylesheets>
+        <URL value="@stylees.css" />
+    </stylesheets>
+
+    <!-- Event ListView -->
+    <ListView fx:id="eventListView" layoutX="14.0" layoutY="65.0" prefHeight="649.0" prefWidth="809.0" stylesheets="@styles.css" AnchorPane.bottomAnchor="86.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="377.0" AnchorPane.topAnchor="65.0" />
+
+    <Button layoutX="965.0" layoutY="246.0" onAction="#deleteSelectedEvents" styleClass="buttonspr" stylesheets="@styles.css" text="Supprimer" AnchorPane.bottomAnchor="514.0" AnchorPane.rightAnchor="130.0" />
+   <Button layoutX="976.0" layoutY="169.0" onAction="#ModifyEvent" styleClass="buttonmod" stylesheets="@styles.css" text="Modify" />
+   <Button layoutX="975.0" layoutY="92.0" onAction="#AddEvent" styleClass="btn" stylesheets="@styles.css" text="Ajouter" />
+   <Button layoutX="188.0" layoutY="736.0" mnemonicParsing="false" onAction="#generatePDF" style="-fx-background-color: purple;" text="Generate PDF" />
+
+    <TextField fx:id="searchField" layoutX="251.0" layoutY="27.0" onAction="#search" prefHeight="26.0" prefWidth="227.0" promptText="SEARCH" />
+   <ImageView fitHeight="54.0" fitWidth="165.0" layoutX="926.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@logo2rism.png" />
+      </image>
+   </ImageView>
+   <VBox fx:id="adresse" layoutX="844.0" layoutY="319.0" prefHeight="275.0" prefWidth="341.0" />
+   <Button layoutX="980.0" layoutY="661.0" mnemonicParsing="false" onAction="#naviguer" text="guide" />
+   <Button layoutX="10.0" layoutY="10.0" minHeight="26.0" mnemonicParsing="false" onAction="#RETOUR" prefHeight="26.0" prefWidth="35.0">
+      <graphic>
+         <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/RETOUR.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+
+</AnchorPane>

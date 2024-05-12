@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierTypePackController">
+   <Pane layoutX="134.0" layoutY="47.0" prefHeight="677.0" prefWidth="605.0" style="-fx-background-color: #FF7F50;">
+      <children>
+         <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="149.0" layoutX="123.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true" />
+         <ImageView fitHeight="56.0" fitWidth="125.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@logo.jpg" />
+            </image>
+         </ImageView>
+         <Text fx:id="titleText" layoutX="237.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title" text="Modifier Type de pack " textAlignment="CENTER" wrappingWidth="189.0000238418579">
+            <font>
+               <Font name="Algerian" size="16.0" />
+            </font>
+         </Text>
+          <Button layoutX="486.0" layoutY="619.0" onAction="#modifierTypePack" text="Modifier" />
+          <TextField fx:id="nouveauNomTypePackTextField" layoutX="243.0" layoutY="176.0" promptText="type de pack" />
+      
+          <Label layoutX="141.0" layoutY="182.0" text="Type de pack :" />
+      </children>
+   </Pane>
+   <Button layoutX="24.0" layoutY="24.0" onAction="#retourALaListe">
+      <graphic>
+         <ImageView fitHeight="20.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@images/RETOUR.png" />
+            </image>
+         </ImageView>
+      </graphic>
+   </Button>
+</AnchorPane>

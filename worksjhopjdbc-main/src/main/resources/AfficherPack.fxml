@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="800.0" prefWidth="1200.0" stylesheets="affichageStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.AfficherPackController">
+   <left>
+      <VBox prefHeight="678.0" prefWidth="657.0">
+         <children>
+            <HBox prefHeight="678.0" prefWidth="657.0">
+               <children>
+                  <AnchorPane prefHeight="100.0" prefWidth="300.0">
+                     <children>
+                        <TextField fx:id="searchField" onKeyReleased="#search" promptText="Search..." />
+                        <VBox spacing="5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                           <children>
+                              <RadioButton fx:id="prixRadioButton" onAction="#triParPrix" text="Trier par Prix" />
+                              <RadioButton fx:id="dateRadioButton" onAction="#triParDate" text="Trier par Date" />
+                              <RadioButton fx:id="disponibiliteRadioButton" onAction="#triParDisponibilite" text="Trier par Disponibilité" />
+                              <Button fx:id="statistiqueButton" onAction="#Statistique" text="Statistique" />
+                              <Button fx:id="genererPDFButton" onAction="#genererPDF" text="Générer PDF" />
+                              <Button mnemonicParsing="false" onAction="#Ajoutpack" prefHeight="31.0" prefWidth="106.0" text="Ajout pack" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+
+
+                  <AnchorPane prefHeight="678.0" prefWidth="1200.0">
+                     <children>
+                        <VBox prefHeight="678.0" prefWidth="1300.0" styleClass="vbox-content">
+                           <!-- Entête -->
+                           <HBox prefHeight="21.0" prefWidth="1200.0" styleClass="hbox-header">
+                              <!-- Contenu de l'entête -->
+                              <Label style="-fx-padding: 0 0px" text="Type pack" />
+                              <Label style="-fx-padding: 0 80px" text="NomPack" />
+                              <Label style="-fx-padding: 0 80px" text="Description" />
+                              <Label style="-fx-padding: 0 30px" text="Prix" />
+                              <Label style="-fx-padding: 0 50px" text="Date" />
+                              <Label style="-fx-padding: 0 60px" text="Disponible" />
+                              <Label style="-fx-padding: 0 50px" text="Image" />
+                              <Label style="-fx-padding: 0 40px" text="Modifier" />
+                              <Label style="-fx-padding: 0 50px" text="supprimer" />
+                           </HBox>
+                           <!-- Barre de recherche -->
+                           <HBox prefHeight="638.0" prefWidth="1200.0" styleClass="hbox-search">
+                              <children>
+                                 <ScrollPane prefHeight="628.0" prefWidth="1200.0">
+                                    <VBox fx:id="pnItems" />
+                                 </ScrollPane>
+                              </children>
+                           </HBox>
+                           <!-- Bouton -->
+                           <HBox prefHeight="40.0" prefWidth="1180.0" style="-fx-padding: 10px; -fx-alignment: center-right;" />
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </left>
+   <top>
+      <ToolBar prefHeight="49.0" prefWidth="1037.0" BorderPane.alignment="CENTER">
+         <Button minHeight="26.0" mnemonicParsing="false" onAction="#RETOUR" prefHeight="26.0" prefWidth="35.0">
+            <graphic>
+               <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <image>
+                     <Image url="@images/RETOUR.png" />
+                  </image>
+               </ImageView>
+            </graphic>
+         </Button>
+         <!-- Ajoutez vos éléments de barre de navigation ici -->
+         <Button onAction="#afficherPack" text="afficher Pack" />
+         <Button onAction="#afficherCategorie" text="afficher categorie" />
+         <Button onAction="#afficherTypePack" text="afficher type Pack" />
+      </ToolBar>
+   </top>
+</BorderPane>

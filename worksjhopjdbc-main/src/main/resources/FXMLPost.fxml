@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane hbarPolicy="NEVER" vbarPolicy="NEVER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.PostController">
+   <content>
+      <AnchorPane fx:id="pane" prefHeight="490.0" prefWidth="800.0">
+          <children>
+            <VBox prefHeight="550.0" prefWidth="800.0" spacing="30.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#232323" height="49.0" opacity="0.37" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="30.0">
+                     <children>
+                        <VBox prefHeight="100.0" prefWidth="237.0" spacing="10.0">
+                           <children>
+                                  <DatePicker fx:id="tfDate" prefHeight="26.0" prefWidth="237.0" promptText="Date " />
+                                    <TextField fx:id="tfHashtag" prefHeight="26.0" prefWidth="160.0" promptText="Hashtag" />
+                              <Button mnemonicParsing="false" onAction="#chooseImage" prefHeight="26.0" prefWidth="238.0" style="-fx-background-color: #ffffff;" text="image">
+                                  <font>
+                                      <Font name="System Bold" size="12.0" />
+                                  </font>
+                                  <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor></Button>
+                           </children>
+                        </VBox>
+                        <VBox prefWidth="300.0" spacing="10.0">
+                           <children>
+                                    <TextArea fx:id="taDescription" prefHeight="100.0" prefWidth="337.0" promptText="Description" style="-fx-background-color: #FFFFFF;" />
+                                  <Button onAction="#ajouterPost" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: #FFFFFF;" text="Ajouter">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="237.0" spacing="10.0">
+                           <children>
+                                  <Button onAction="#modifierPost" prefHeight="26.0" prefWidth="234.0" style="-fx-background-color: #FFFFFF;" text="Modifier">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                                  <Button onAction="#supprimerPost" prefHeight="26.0" prefWidth="237.0" style="-fx-background-color: #FFFFFF;" text="Supprimer">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Button onAction="#allerACommentaire" prefHeight="26.0" prefWidth="99.0" style="-fx-background-color: #FFFFFF;" text="Commentaires">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                    </Button>
+                                    <Button mnemonicParsing="false" onAction="#pdf" prefHeight="26.0" prefWidth="103.0" style="-fx-background-color: #ffffff;" text="Generer Pdf">
+                                       <cursor>
+                                          <Cursor fx:constant="HAND" />
+                                       </cursor>
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                    <TableView fx:id="tableViewPosts" minHeight="200.0" prefHeight="118.0" prefWidth="760.0">
+                        <columns>
+                            <TableColumn fx:id="colHashtag" prefWidth="150.0" text="Hashtag" />
+                            <TableColumn fx:id="colDescription" prefWidth="150.0" text="Description" />
+                            <TableColumn fx:id="colImage" prefWidth="150.0" text="Image" />
+                            <TableColumn fx:id="colDate" prefWidth="150.0" text="Date" />
+                        </columns>
+                     <VBox.margin>
+                        <Insets left="20.0" right="20.0" />
+                     </VBox.margin>
+                    </TableView>
+                  <BarChart fx:id="likesChart" maxWidth="761.0" prefHeight="200.0" prefWidth="761.0">
+                    <xAxis>
+                      <CategoryAxis label="Post id" side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis label="likes" side="LEFT" />
+                    </yAxis>
+                     <VBox.margin>
+                        <Insets left="50.0" right="50.0" />
+                     </VBox.margin>
+                  </BarChart>
+               </children>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </VBox>
+            <ImageView fitHeight="49.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@Logo.png" />
+               </image>
+            </ImageView>
+          </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

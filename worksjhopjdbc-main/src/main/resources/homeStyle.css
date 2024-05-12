@@ -1,0 +1,16 @@
+/* Style pour les boutons */
+.button {
+    -fx-background-color: #ff784f; /* Couleur de fond */
+    -fx-text-fill: #5cb1e8; /* Couleur du texte */
+    -fx-font-size: 14px; /* Taille de la police */
+    -fx-padding: 10px 20px; /* Espacement intérieur */
+    -fx-min-width: 200px; /* Largeur minimale */
+    -fx-min-height: 50px; /* Hauteur minimale */
+}
+
+/* Style pour les étiquettes */
+.label {
+    -fx-font-size: 16px; /* Taille de la police */
+    -fx-font-weight: bold; /* Gras */
+    -fx-text-fill: #333; /* Couleur du texte */
+}

@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ListController">
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <BorderPane layoutX="126.0" layoutY="161.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="45.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane layoutX="-4.0" prefHeight="46.0" prefWidth="1106.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="0.0" />
+                        <Button layoutX="10.0" layoutY="10.0" minHeight="29.0" mnemonicParsing="false" onAction="#RETOUR" prefHeight="29.0" prefWidth="77.0">
+                           <graphic>
+                              <ImageView fitHeight="42.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/RETOUR.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <left>
+                  <AnchorPane prefHeight="554.0" prefWidth="230.0" styleClass="sidebar" stylesheets="@dashboard.css" BorderPane.alignment="CENTER">
+                     <children>
+                        <Button fx:id="home_btn" layoutX="-2.0" layoutY="141.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="26.0" prefWidth="231.0" styleClass="main-btn1" stylesheets="@dashboard.css" text="home" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                        <Button fx:id="ajouter_hebergement_btn" layoutY="174.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="26.0" prefWidth="229.0" styleClass="main-btn1" stylesheets="@dashboard.css" text="ajouter hebergement" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                        <Button fx:id="modifier_hebergement_btn" layoutY="207.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="26.0" prefWidth="230.0" styleClass="main-btn1" stylesheets="@dashboard.css" text="modifier hebergement" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font></Button>
+                        <Button fx:id="affichage_front_btn" layoutX="3.0" layoutY="244.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="26.0" prefWidth="230.0" styleClass="main-btn1" stylesheets="@dashboard.css" text="affichage front" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+               </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <AnchorPane fx:id="home_form" layoutX="10.4" layoutY="14.4" prefHeight="526.0" prefWidth="858.0" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="14.0">
+                           <children>
+                              <AnchorPane layoutX="13.0" layoutY="14.0" prefHeight="186.0" prefWidth="815.0" styleClass="pane" stylesheets="@dashboard.css">
+                                 <children>
+                                    <AnchorPane layoutX="22.0" layoutY="18.0" prefHeight="150.0" prefWidth="250.0" styleClass="pane1" stylesheets="@dashboard.css">
+                                       <children>
+                                          <Label layoutX="54.0" layoutY="89.0" text="hotels en total " textFill="#fcf9f9">
+                                             <font>
+                                                <Font name="Century Gothic Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="nbr_hotels" layoutX="122.0" layoutY="49.0" text=" ">
+                                             <font>
+                                                <Font name="Century Gothic Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="550.0" layoutY="18.0" prefHeight="150.0" prefWidth="250.0" styleClass="pane1" stylesheets="@dashboard.css">
+                                       <children>
+                                          <Label layoutX="37.0" layoutY="97.0" text="AIR BNB en totales " textFill="#f7f0f0">
+                                             <font>
+                                                <Font name="Century Gothic Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="nbr_airbnb" layoutX="124.0" layoutY="53.0" text=" ">
+                                             <font>
+                                                <Font name="Century Gothic Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="288.0" layoutY="18.0" prefHeight="150.0" prefWidth="250.0" styleClass="pane1" stylesheets="@dashboard.css">
+                                       <children>
+                                          <Label layoutX="14.0" layoutY="94.0" text="maisons d'hautes en total" textFill="#f7f0f0">
+                                             <font>
+                                                <Font name="Century Gothic Bold" size="18.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="nbr_maison_hautes" layoutX="122.0" layoutY="50.0" text=" ">
+                                             <font>
+                                                <Font name="Century Gothic Bold" size="20.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <BarChart fx:id="chart" layoutX="139.0" layoutY="229.0" prefHeight="260.0" prefWidth="577.0">
+                                <xAxis>
+                                  <CategoryAxis side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                  <NumberAxis side="LEFT" />
+                                </yAxis>
+                              </BarChart>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="ajouter_form" prefHeight="554.4" prefWidth="869.6" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="15.0" layoutY="14.0" prefHeight="326.0" prefWidth="838.0" styleClass="pane" stylesheets="@dashboard.css">
+                                 <children>
+                                    <TextField fx:id="search" layoutX="14.0" layoutY="7.0" prefHeight="26.0" prefWidth="330.0" />
+                                    <ListView fx:id="listviewajout" layoutX="13.0" layoutY="40.0" prefHeight="274.0" prefWidth="812.0" />
+                                 </children>
+                              </AnchorPane>
+                              <TextField fx:id="emplacement_field" alignment="CENTER" layoutX="31.0" layoutY="400.0" prefHeight="26.0" prefWidth="212.0" promptText="emplacement" />
+                              <TextField fx:id="nbr_etoiles_field" alignment="CENTER" layoutX="31.0" layoutY="444.0" prefHeight="26.0" prefWidth="211.0" promptText="nbr_etoiles" />
+                              <TextField fx:id="description_filed" alignment="CENTER" layoutX="260.0" layoutY="361.0" prefHeight="26.0" prefWidth="178.0" promptText="description" />
+                              <TextField fx:id="prix_field" alignment="CENTER" layoutX="260.0" layoutY="400.0" prefHeight="26.0" prefWidth="178.0" promptText="prix" />
+                              <TextField fx:id="name_field" alignment="CENTER" layoutX="261.0" layoutY="444.0" prefHeight="26.0" prefWidth="176.0" promptText="name" />
+                              <ChoiceBox fx:id="type_hebergement_choice" layoutX="142.0" layoutY="361.0" prefHeight="26.0" prefWidth="100.0" />
+                              <Label layoutX="31.0" layoutY="367.0" prefHeight="14.0" prefWidth="101.0" text="type hebergement">
+                                 <font>
+                                    <Font name="Century Gothic Bold" size="11.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="28.0" layoutY="492.0" mnemonicParsing="false" onAction="#add_btn" prefHeight="26.0" prefWidth="409.0" styleClass="btn" stylesheets="@dashboard.css" text="ajouter hebergement" />
+                              <VBox fx:id="adresse" layoutX="456.0" layoutY="357.0" prefHeight="165.0" prefWidth="402.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="modifier_form" layoutX="157.0" layoutY="160.0" prefHeight="554.4" prefWidth="869.6" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="10.0" layoutY="30.0" prefHeight="498.0" prefWidth="218.0" styleClass="pane" stylesheets="@dashboard.css">
+                                 <children>
+                                    <TextField fx:id="emplacement_field_mod" alignment="CENTER" layoutX="28.0" layoutY="65.0" prefHeight="26.0" prefWidth="161.0" promptText="emplacement" />
+                                    <TextField fx:id="nbr_etoiles_field_mod" alignment="CENTER" layoutX="28.0" layoutY="102.0" prefHeight="26.0" prefWidth="161.0" promptText="nbr_etoiles" />
+                                    <TextField fx:id="description_field_mod" alignment="CENTER" layoutX="28.0" layoutY="139.0" prefHeight="26.0" prefWidth="160.0" promptText="description" />
+                                    <TextField fx:id="prix_field_mod" alignment="CENTER" layoutX="27.0" layoutY="176.0" prefHeight="26.0" prefWidth="161.0" promptText="prix" />
+                                    <TextField fx:id="name_field_mod" alignment="CENTER" layoutX="28.0" layoutY="212.0" prefHeight="26.0" prefWidth="162.0" promptText="name" />
+                                    <ChoiceBox fx:id="type_hebergement_field_mod" layoutX="29.0" layoutY="28.0" prefHeight="26.0" prefWidth="158.0" />
+                                    <Button layoutX="37.0" layoutY="256.0" mnemonicParsing="false" onAction="#modify_btn" prefHeight="26.0" prefWidth="143.0" styleClass="btn" stylesheets="@dashboard.css" text="modifier hebergement" />
+                                    <AnchorPane fx:id="qr" layoutX="27.0" layoutY="298.0" prefHeight="146.0" prefWidth="160.0" styleClass="pane" stylesheets="@dashboard.css">
+                                       <children>
+                                          <ImageView fx:id="qr_image" fitHeight="148.0" fitWidth="158.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Button layoutX="24.0" layoutY="458.0" mnemonicParsing="false" onAction="#generate" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: lavender;" styleClass="btn" stylesheets="@dashboard.css" text="generer qr code" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="246.0" layoutY="30.0" prefHeight="497.0" prefWidth="598.0" styleClass="pane" stylesheets="@dashboard.css">
+                                 <children>
+                                    <ListView fx:id="listviewmod" layoutX="16.0" layoutY="21.0" prefHeight="456.0" prefWidth="566.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="front_form" layoutX="100.0" layoutY="120.0" prefHeight="554.4" prefWidth="866.4" stylesheets="@dashboard.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <AnchorPane layoutX="65.0" layoutY="38.0" prefHeight="462.0" prefWidth="726.0" styleClass="pane" stylesheets="@dashboard.css">
+                                 <children>
+                                    <ScrollPane fx:id="front_scroll_pane" layoutX="14.0" layoutY="14.0" prefHeight="430.0" prefWidth="691.0">
+                                       <content>
+                                          <GridPane fx:id="front_grid_pane" prefHeight="29.0" prefWidth="116.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            </columnConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </center>
+            </BorderPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

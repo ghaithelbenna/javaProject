@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.ModifierPackController">
+    <children>
+        <Button layoutX="14.0" layoutY="13.0" onAction="#retourALaListe">
+         <graphic>
+            <ImageView fitHeight="20.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/RETOUR.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Pane layoutX="123.0" layoutY="51.0" prefHeight="677.0" prefWidth="605.0" style="-fx-background-color: #FF7F50;">
+         <children>
+            <ImageView fx:id="imageView1" fitHeight="120.0" fitWidth="149.0" layoutX="123.0" layoutY="499.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="56.0" fitWidth="125.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logo.jpg" />
+               </image>
+            </ImageView>
+            <Text fx:id="titleText" layoutX="237.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text-title" text="Modifier pack " textAlignment="CENTER" wrappingWidth="189.0000238418579">
+               <font>
+                  <Font name="Algerian" size="16.0" />
+               </font>
+            </Text>
+              <Button layoutX="467.0" layoutY="625.0" mnemonicParsing="false" onAction="#modifier" prefHeight="31.0" prefWidth="125.0" text="Modifier" />
+              <Button fx:id="ImageT" layoutX="143.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleImageSelection" text="inserer image" />
+              <CheckBox fx:id="DisponibleT" layoutX="198.0" layoutY="398.0" mnemonicParsing="false" text="Disponibilité" />
+              <Label layoutX="150.0" layoutY="168.0" text="Nom de Pack" />
+              <TextField fx:id="NomT" layoutX="249.0" layoutY="164.0" prefHeight="31.0" prefWidth="265.0" />
+              <TextField fx:id="DescriptionT" layoutX="249.0" layoutY="217.0" prefHeight="31.0" prefWidth="265.0" />
+              <TextField fx:id="PrixT" layoutX="249.0" layoutY="272.0" prefHeight="31.0" prefWidth="265.0" />
+              <Label layoutX="169.0" layoutY="277.0" text="Prix" />
+              <Label layoutX="160.0" layoutY="222.0" text="Description" />
+              <DatePicker fx:id="DateT" layoutX="249.0" layoutY="333.0" prefHeight="31.0" prefWidth="265.0" />
+              <Label layoutX="172.0" layoutY="338.0" text="Date" />
+              <ImageView fx:id="imageView" fitHeight="120.0" fitWidth="149.0" layoutX="303.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </Pane>
+    </children>
+</AnchorPane>

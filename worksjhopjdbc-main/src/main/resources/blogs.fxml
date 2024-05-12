@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="mainPane" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.Blogs">
+    <children>
+        <ScrollPane hbarPolicy="NEVER" maxWidth="800.0" prefHeight="550.0" style="-fx-background-color: #f5f5f5;" vbarPolicy="NEVER">
+            <content>
+                <VBox prefHeight="200.0" prefWidth="800.0">
+                    <children>
+                        <StackPane prefHeight="200.0" prefWidth="800.0">
+                            <children>
+                                <ImageView fitHeight="200.0" fitWidth="800.0" pickOnBounds="true">
+                                    <image>
+                                        <Image url="@bg.png" />
+                                    </image>
+                                </ImageView>
+                                <Rectangle arcHeight="5.0" arcWidth="5.0" height="200.0" opacity="0.5" stroke="#ff050500" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
+                                <Label text="Explorez nos Blogs!" textFill="WHITE">
+                                    <font>
+                                        <Font name="System Bold" size="30.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </StackPane>
+                        <HBox alignment="CENTER_LEFT" spacing="35.0">
+                            <children>
+                                <Label text="Blogs">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <VBox.margin>
+                                <Insets left="30.0" right="30.0" top="10.0" />
+                            </VBox.margin>
+                        </HBox>
+                        <GridPane fx:id="postsGrid" alignment="TOP_CENTER">
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                            <VBox.margin>
+                                <Insets />
+                            </VBox.margin>
+                            <columnConstraints>
+                                <ColumnConstraints />
+                            </columnConstraints>
+                        </GridPane>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</Pane>

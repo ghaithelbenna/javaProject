@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" maxHeight="551.0" maxWidth="858.0" minHeight="0.0" minWidth="0.0" prefHeight="551.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tn.esprit.controllers.CommentaireController">
+   <children>
+      <VBox prefHeight="550.0" prefWidth="800.0" spacing="30.0">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#232323" height="49.0" opacity="0.37" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
+            <HBox>
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Post : ">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" text="name">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#btnDel" text="Suprimer">
+               <VBox.margin>
+                  <Insets bottom="-20.0" left="20.0" />
+               </VBox.margin>
+            </Button>
+            <TableView fx:id="tableViewCommentaires" prefHeight="250.0" prefWidth="726.0" style="-fx-background-color: #FFFFFF;">
+               <columns>
+                  <TableColumn fx:id="colId" prefWidth="75.0" text="ID" />
+                  <TableColumn fx:id="colPostId" prefWidth="150.0" text="ID du Post" />
+                  <TableColumn fx:id="colDate" prefWidth="150.0" text="Date" />
+                  <TableColumn fx:id="colCommentaire" prefWidth="165.60001220703123" text="Commentaire" />
+               </columns>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
+      </VBox>
+      <ImageView fitHeight="26.0" fitWidth="77.0" layoutX="705.0" layoutY="11.0">
+         <image>
+            <Image url="@Logo.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="15.0" layoutY="5.0" mnemonicParsing="false" onAction="#navigateBack" prefHeight="32.0" prefWidth="38.0" style="-fx-background-color: #23233201;" text="&lt;">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

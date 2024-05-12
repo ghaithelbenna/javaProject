@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="org.jvoicexml.jsapi2.sphinx4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/worksjhopjdbc-main/jsr-113-0.5.1/org.jvoicexml.jsapi2.sphinx4.jar!/" />
+      <root url="jar://$PROJECT_DIR$/worksjhopjdbc-main/jsr-113-0.5.1/org.jvoicexml.jsapi2.sapi.jar!/" />
+      <root url="jar://$PROJECT_DIR$/worksjhopjdbc-main/jsr-113-0.5.1/org.jvoicexml.jsapi2.mac.jar!/" />
+      <root url="jar://$PROJECT_DIR$/worksjhopjdbc-main/jsr-113-0.5.1/org.jvoicexml.jsapi2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/worksjhopjdbc-main/jsr-113-0.5.1/org.jvoicexml.jsapi2.freetts.jar!/" />
+      <root url="jar://$PROJECT_DIR$/worksjhopjdbc-main/jsr-113-0.5.1/jsr113.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
